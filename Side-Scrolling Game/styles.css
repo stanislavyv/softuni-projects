@@ -1,0 +1,126 @@
+body {
+    font-size: 32px;
+    font-family: monospace;
+}
+
+.hide {
+    display: none;
+}
+
+.game-area {
+    position: relative;
+    background: rgb(61, 160, 244);
+    background: linear-gradient(0deg, 
+            rgba(61, 160, 244, 1) 0%,
+            rgba(192, 221, 246, 1) 33%,
+            rgba(55, 157, 244, 1) 100%);
+    width: 100%;
+    height: 93vh;
+    margin: 0;
+}
+
+.game-start {
+    position: absolute;
+    width: 30%;
+    background-color: rgb(235, 253, 153);
+    border-radius: 30px;
+    top: 100px;
+    left: 35%;
+    z-index: 1;
+    text-align: center;
+    font-size: 32px;
+    padding: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px rgb(143, 143, 143);
+}
+
+.game-start:hover {
+    background-color: rgb(224, 250, 109);
+}
+
+.game-start:active {
+    background-color: rgb(223, 248, 113);
+    box-shadow: 0 2px rgb(102, 102, 102);
+    transform: translateY(4px);
+}
+
+.game-over {
+    position: absolute;
+    width: 30%;
+    background-color: red;
+    border-radius: 30px;
+    top: 100px;
+    left: 35%;
+    z-index: 1;
+    text-align: center;
+    font-size: 26px;
+    color: whitesmoke;
+    padding: 30px;
+    z-index: 100;
+    cursor: pointer;
+    box-shadow: 0 4px rgb(102, 102, 102);
+}
+
+.game-over:hover {
+    background-color: rgb(224, 0, 0);
+}
+
+.game-over:active {
+    background-color: rgb(224, 0, 0);
+    box-shadow: 0 2px rgb(80, 80, 80);
+    transform: translateY(4px);
+}
+
+.game-score {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.wizard {
+    z-index: 100;
+    position: absolute;
+    width: 82px;
+    height: 100px;
+    background-image: url(./images/wizard.png);
+    background-size: cover;
+}
+
+.wizard-fire {
+    background-image: url(./images/wizard-fire.png);
+}
+
+.fire-ball {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url(./images/fire-ball.png);
+    background-size: cover;
+}
+
+.cloud {
+    position: absolute;
+    z-index: 0;
+    height: 200px;
+    width: 200px;
+    background-image: url(./images/cloud.png);
+    background-size: cover;
+}
+
+.bug {
+    position: absolute;
+    z-index: 100;
+    height: 80px;
+    width: 80px;
+    background-image: url(./images/bug.png);
+    background-size: cover;
+}
+
+.explosion {
+    position: absolute;
+    z-index: 100;
+    height: 100px;
+    width: 100px;
+    background-image: url(./images/explosion.png);
+    background-size: cover;
+}
