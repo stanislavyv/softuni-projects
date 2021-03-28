@@ -3,22 +3,28 @@ using System.Collections.Generic;
 
 namespace Custom_Doubly_Linked_List
 {
-    class DoublyLinkedList
+    class DoublyLinkedList<T>
     {
-        private ListNode head;
-        private ListNode tail;
+        private ListNode<T> head;
+        private ListNode<T> tail;
+
+        public DoublyLinkedList()
+        {
+            this.head = new ListNode<T>();
+            this.tail = new ListNode<T>();
+        }
 
         public int Count { get; private set; }
 
-        public void AddFirst(int element)
+        public void AddFirst(T element)
         {
             if (this.Count == 0)
             {
-                this.head = this.tail = new ListNode(element);
+                this.head = this.tail = new ListNode<T>(element);
             }
             else
             {
-                var newHead = new ListNode(element);
+                var newHead = new ListNode<T>(element);
                 newHead.NextNode = this.head;
                 this.head.PreviousNode = newHead;
                 this.head = newHead;
@@ -27,15 +33,15 @@ namespace Custom_Doubly_Linked_List
             this.Count++;
         }
 
-        public void AddLast(int element)
+        public void AddLast(T element)
         {
             if (this.Count == 0)
             {
-                this.head = this.tail = new ListNode(element);
+                this.head = this.tail = new ListNode<T>(element);
             }
             else
             {
-                var newTail = new ListNode(element);
+                var newTail = new ListNode<T>(element);
                 newTail.PreviousNode = this.tail;
                 this.tail.NextNode = newTail;
                 this.tail = newTail;
@@ -44,7 +50,7 @@ namespace Custom_Doubly_Linked_List
             this.Count++;
         }
 
-        public int RemoveFirst()
+        public T RemoveFirst()
         {
             if (this.Count == 0)
             {
@@ -68,7 +74,7 @@ namespace Custom_Doubly_Linked_List
             return firstElement;
         }
 
-        public int RemoveLast()
+        public T RemoveLast()
         {
             if (this.Count == 0)
             {
@@ -92,7 +98,28 @@ namespace Custom_Doubly_Linked_List
             return lastElement;
         }
 
-        public void ForEach(Action<int> action)
+        public ListNode<T> GetNode(int index)
+        {
+            if (index < 0 || index >= this.Count)
+            {
+                throw new IndexOutOfRangeException("Index must be inside the bounds of the List");
+            }
+
+            var currNode = this.head;
+
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (i == index)
+                {
+                    break;
+                }
+                currNode = currNode.NextNode;
+            }
+
+            return currNode;
+        }
+
+        public void ForEach(Action<T> action)
         {
             var currNode = this.head;
 
@@ -103,9 +130,9 @@ namespace Custom_Doubly_Linked_List
             }
         }
 
-        public int[] ToArray()
+        public T[] ToArray()
         {
-            int[] arr = new int[this.Count];
+            T[] arr = new T[this.Count];
             int counter = 0;
             var currNode = this.head;
 

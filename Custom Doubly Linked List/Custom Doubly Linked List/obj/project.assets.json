@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stani\\source\\repos\\ADVANCED\\Workshop 2\\Custom Doubly Linked List\\Custom Doubly Linked List\\Custom Doubly Linked List.csproj",
+      "projectUniqueName": "C:\\Users\\stani\\OneDrive\\Документи\\GitHub\\softuni-projects\\Custom Doubly Linked List\\Custom Doubly Linked List\\Custom Doubly Linked List.csproj",
       "projectName": "Custom Doubly Linked List",
-      "projectPath": "C:\\Users\\stani\\source\\repos\\ADVANCED\\Workshop 2\\Custom Doubly Linked List\\Custom Doubly Linked List\\Custom Doubly Linked List.csproj",
+      "projectPath": "C:\\Users\\stani\\OneDrive\\Документи\\GitHub\\softuni-projects\\Custom Doubly Linked List\\Custom Doubly Linked List\\Custom Doubly Linked List.csproj",
       "packagesPath": "C:\\Users\\stani\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stani\\source\\repos\\ADVANCED\\Workshop 2\\Custom Doubly Linked List\\Custom Doubly Linked List\\obj\\",
+      "outputPath": "C:\\Users\\stani\\OneDrive\\Документи\\GitHub\\softuni-projects\\Custom Doubly Linked List\\Custom Doubly Linked List\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
