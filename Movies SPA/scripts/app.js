@@ -1,5 +1,5 @@
-import moviesService from "./models/moviesService.js";
-import userAuth from "./models/auth.js";
+import movieService from "./models/movieService.js";
+import authService from "./models/auth.js";
 
 const templateShortcuts = {
     home: '../templates/home/home.hbs',
@@ -23,7 +23,7 @@ $(() => {
         this.get('#/home', async function () {
             this.userId = localStorage.getItem('userId');
             this.email = localStorage.getItem('email');
-            this.movies = await moviesService.getAllMovies(this.userId);
+            this.movies = await movieService.getAllMovies(this.userId);
 
             this.loadPartials({
                 header: templateShortcuts.header,
@@ -51,7 +51,7 @@ $(() => {
             const password = context.params.password;
             const repeatPassword = context.params.repeatPassword;
 
-            userAuth.register({ email, password, repeatPassword })
+            authService.register({ email, password, repeatPassword })
                 .then(res => {  
                     // What is 'this??' What would it be were it a fn expression?
                     if (res) { location.replace('#/home'); }
@@ -73,7 +73,7 @@ $(() => {
             const email = context.params.email;
             const password = context.params.password;
 
-            userAuth.login({ email, password })
+            authService.login({ email, password })
                 .then(res => {
                     if (res) { location.replace('#/home'); }
                 });
@@ -81,7 +81,7 @@ $(() => {
 
         // Logout
         this.get('#/logout', function () {
-            userAuth.logout()
+            authService.logout()
                 .then(res => {
                     if (res) { this.redirect('#/home'); }
                 });
@@ -108,7 +108,7 @@ $(() => {
                 likes: 0
             };
 
-            moviesService.addMovie(localStorage.getItem('userId'), movieData)
+            movieService.addMovie(localStorage.getItem('userId'), movieData)
                 .then(res => {
                     if (res) { location.replace('#/home'); }
                 });
@@ -119,7 +119,7 @@ $(() => {
             this.userId = localStorage.getItem('userId');
             this.title = context.params['search-title'];
 
-            moviesService.searchMovie(this.userId, this.title)
+            movieService.searchMovie(this.userId, this.title)
                 .then(res => {
                     if (res) { this.redirect(`#/details/${res}`)}
                 });
@@ -131,7 +131,7 @@ $(() => {
             this.movieId = context.params.id;
             this.email = localStorage.getItem('email');
 
-            const movie = await moviesService.getMovie(this.userId, this.movieId);
+            const movie = await movieService.getMovie(this.userId, this.movieId);
             this.title = movie.title;
             this.description = movie.description;
             this.imageUrl = movie.imageUrl;
@@ -157,7 +157,7 @@ $(() => {
                 .text()
                 .slice(6)); // "Liked 0";
 
-            moviesService.likeMovie(this.userId, this.movieId, this.likes)
+            movieService.likeMovie(this.userId, this.movieId, this.likes)
                 .then(res => {
                     if (res) { location.replace(`#/details/${this.movieId}`); }
                 });
@@ -186,7 +186,7 @@ $(() => {
                 imageUrl: context.params.imageUrl
             };
 
-            moviesService.editMovie(this.userId, this.movieId, this.movieData)
+            movieService.editMovie(this.userId, this.movieId, this.movieData)
                 .then(res => {
                     if (res) { location.replace(`#/details/${this.movieId}`) };
                 });
@@ -197,7 +197,7 @@ $(() => {
             this.userId = localStorage.getItem('userId');
             this.movieId = context.params.id;
 
-            moviesService.deleteMovie(this.userId, this.movieId)
+            movieService.deleteMovie(this.userId, this.movieId)
                 .then(res => {
                     if (res) { location.replace('#/home'); }
                 });

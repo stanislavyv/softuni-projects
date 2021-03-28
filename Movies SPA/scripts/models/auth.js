@@ -1,4 +1,6 @@
-const userAuth = (() => {
+import notificationService from "./notificationService.js";
+
+const authService = (() => {
     const auth = firebase.auth();
 
     const saveSession = function (userData) {
@@ -27,10 +29,10 @@ const userAuth = (() => {
             const res = await auth.createUserWithEmailAndPassword(email, password);
             saveSession(res);
 
-            showInfo('Successful registration!');
+            notificationService.showInfo('Successful registration!');
             return true;
         } catch (e) {
-            showError(`Registration unsuccessful - ${e.message}`);
+            notificationService.showError(`Registration unsuccessful - ${e.message}`);
             return false;
         }
     }
@@ -46,10 +48,10 @@ const userAuth = (() => {
             const res = await auth.signInWithEmailAndPassword(email, password);
             saveSession(res);
 
-            showInfo('Logged in successfully!');
+            notificationService.showInfo('Logged in successfully!');
             return true;
         } catch (e) {
-            showError(`There was a problem with login - ${e.message}`);
+            notificationService.showError(`There was a problem with login - ${e.message}`);
             return false;
         }
     }
@@ -59,35 +61,19 @@ const userAuth = (() => {
             await auth.signOut();
             localStorage.clear();
 
-            showInfo('Logged out successfully!');
+            notificationService.showInfo('Logged out successfully!');
             return true;
         } catch (e) {
-            showError(`There was a problem with logout - ${e.message}`);
+            notificationService.showError(`There was a problem with logout - ${e.message}`);
             return false;
         }
-    }
-
-    const showInfo = function (message) {
-        const infoBox = $('#successBox');
-        infoBox.text(message);
-        infoBox.parent().show();
-        setTimeout(() => infoBox.parent().fadeOut(), 3000);
-    }
-
-    const showError = function (message) {
-        const errorBox = $('#errorBox');
-        errorBox.text(message);
-        errorBox.parent().show();
-        setTimeout(() => errorBox.parent().fadeOut(), 3000);
     }
 
     return {
         register,
         login,
-        logout,
-        showInfo,
-        showError
+        logout
     };
 })()
 
-export default userAuth;
+export default authService;

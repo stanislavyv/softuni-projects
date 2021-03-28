@@ -1,6 +1,6 @@
 const requester = (() => {
-    const dataBaseUrl = 'https://testapp-449d2-default-rtdb.europe-west1.firebasedatabase.app/Movies';
-
+    const dataBaseUrl = `${firebaseConfig.databaseURL}/Movies`;
+    
     const makeRequest = async function (method, userId, endpoint, body) {
         if (!userId) { return false; }
 
