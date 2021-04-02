@@ -3,7 +3,10 @@ import validator from "./validationService.js";
 
 const shoeService = (() => {
     const getAllShoes = async function (userId) {
-        return await requester.get(userId);
+        const shoes = await requester.get(userId);
+
+        // For sorting purposes:
+        return Object.keys(shoes).map(key => Object.assign(shoes[key], { key }));
     };
 
     const getShoe = async function (userId, shoeId) {

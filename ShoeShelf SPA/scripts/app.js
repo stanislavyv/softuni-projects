@@ -15,7 +15,6 @@ const templateShortcuts = {
     offerDetails: '../templates/offers/offer_details/offer-details.hbs'
 };
 
-//TODO: Order shoes in homepage by number of buyers descending...
 $(() => {
     const app = Sammy('#root', function () {
         this.use('Handlebars', 'hbs');
@@ -26,6 +25,13 @@ $(() => {
             this.email = localStorage.getItem('email');
             this.loggedIn = !!this.userId;
             this.shoes = await shoeService.getAllShoes(this.userId);
+
+            this.shoes.sort((a, b) => {
+                if (!a.peopleBought) { a.peopleBought = []; }
+                if (!b.peopleBought) { b.peopleBought = []; }
+
+                return b.peopleBought.length - a.peopleBought.length;
+            });
 
             this.loadPartials({
                 header: templateShortcuts.header,
