@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;700&display=swap");
+
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Gelasio", serif;
+    color: #cacaca;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: white;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #cacaca;
+}
+
+[class$="-title"],
+[class$="-heading"] {
+    text-shadow: 3px 1px 1px black;
+}
+
+.site-header {
+    background-image: url(./images/map.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 8px;
+    min-height: 477px;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 72px 0 15px;
+}
+
+.header-nav-logo {
+    max-width: 55px;
+}
+
+.header-nav-logo img {
+    width: 100%;
+}
+
+.header-nav-login {
+    position: relative;
+}
+
+.header-nav-login i {
+    position: absolute;
+    left: 67px;
+    top: 1px;
+}
+
+.header-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 412px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 10px;
+}
+
+.header-content-title {
+    font-size: 50px;
+    margin-bottom: 14px;
+}
+
+.header-content-btn a {
+    font-family: Helvetica, sans-serif;
+    color: white;
+    background: #146594;
+    padding: 9px 8px;
+    border-radius: 4px;
+}
+
+.articles-heading {
+    color: #53595c;
+    text-shadow: none;
+}
+
+.articles-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.articles-container {
+    display: flex;
+}
+
+.article {
+    position: relative;
+}
+
+.article-heading {
+    position: absolute;
+    font-size: 24px;
+    text-shadow: 3px 1px 1px black;
+}
+
+.article-img,
+.article-img img {
+    height: 300px;
+}
+
+.article-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.first-article .article-img,
+.first-article .article-img img {
+    height: 600px;
+}
+
+.first-article {
+    width: 380px;
+}
+
+.other-articles {
+    width: 700px;
+}
+
+.article-heading.first {
+    left: 51px;
+    top: 88px;
+}
+
+.article-heading.second {
+    top: -23px;
+    left: 118px;
+}
+
+.article-heading.third {
+    left: 10px;
+    bottom: 0;
+}
+
+/* TODO: 
+- Make a footer 
+- tip: select footer li elements 
+    for ::before el with a class
+*/
+
+.site-footer {
+    display: flex;
+    padding: 15px 0;
+    background: #8c8c8c;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-first-list,
+.footer-second-list,
+.footer-third-list {
+    display: flex;
+}
+
+.footer-list-item {
+    position: relative;
+    color: #c8c8c8;
+}
+
+.vertical-slash-li {
+    margin-left: 18px;
+}
+
+.vertical-slash-li::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 21px;
+    left: -12px;
+    background: #c8c8c8;
+}

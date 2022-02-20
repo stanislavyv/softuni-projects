@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;700&display=swap");
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Lato, sans-serif;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #5a546d;
+    text-decoration: none;
+}
+
+.header-navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 80px 20px;
+}
+
+.site-logo {
+    max-width: 150px;
+}
+
+.site-logo img {
+    width: 100%;
+}
+
+.header-nav ul {
+    display: flex;
+}
+
+.header-nav li {
+    margin-right: 9px;
+}
+
+.header-nav li a {
+    font-weight: 500;
+}
+
+/* HEADER FEE CARDS */
+
+.header-fees-wrapper {
+    background: #54546d;
+    position: relative;
+    height: 310px;
+    margin-bottom: 245px;
+    padding-top: 30px;
+    z-index: 1;
+}
+
+.header-fees-heading {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 43px;
+}
+
+.header-svg-image {
+    position: absolute;
+    top: 51px;
+    left: -29px;
+    z-index: 1;
+}
+
+.header-fees-cards {
+    display: flex;
+    justify-content: center;
+}
+
+.header-fee-card {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 6px;
+    margin: 0 11px;
+    box-shadow: 1px 3px 4px 0px #b9b9b9;
+}
+
+.header-fee-card-text {
+    padding: 10px 23px 0;
+}
+
+.header-fee-card-heading {
+    color: #54546d;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header-fee-card-details {
+    margin-top: 0;
+    color: #565656;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.header-fee-card-fee-wrapper {
+    padding: 0 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: white;
+    margin-top: 18px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.header-fee-card-fee {
+    text-align: center;
+}
+
+.header-fee-card-fee-details {
+    margin-bottom: 0;
+}
+
+.fundamentals-program-card-fee,
+.professional-program-card-fee {
+    width: 100%;
+    max-width: 190px;
+}
+
+.header-fee-card-details-indent {
+    text-indent: 5%;
+}
+
+.header-fee-card-fee-after {
+    position: relative;
+}
+
+.header-fee-card-fee-after::after {
+    content: "";
+    position: absolute;
+    height: 93px;
+    width: 1px;
+    top: 9px;
+    right: 0px;
+    background: white;
+}
+
+.professional-program-card-fee.header-fee-card-fee-after::after {
+    right: -13px;
+}
+
+/* DESIGN BASICS CARD */
+
+.design-basics-card .header-fee-card-heading {
+    margin-bottom: 6px;
+}
+
+.design-basics-card .header-fee-card-btn {
+    color: white;
+    background: #9a5dc6;
+    padding: 11px 27px;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 1px 2px 4px 1px darkgrey;
+    margin: 20px 0 0;
+    font-size: 17px;
+}
+
+.design-basics-card .header-fee-card-text {
+    flex-grow: 2;
+}
+
+.design-basics-card-fee-wrapper {
+    display: block;
+    flex-grow: 1;
+    background: rgb(4, 156, 62);
+    background: linear-gradient(
+        90deg,
+        rgba(4, 156, 62, 1) 0%,
+        rgba(40, 185, 95, 1) 49%,
+        rgba(74, 214, 128, 1) 100%
+    );
+}
+
+/* FUNDAMENTALS PROGRAM FEE CARD */
+
+.fundamentals-program-card-fee-wrapper {
+    background: rgb(76, 108, 136);
+    background: linear-gradient(
+        90deg,
+        rgba(76, 108, 136, 1) 0%,
+        rgba(87, 131, 171, 1) 49%,
+        rgba(98, 154, 207, 1) 100%
+    );
+}
+
+/* PROFESSIONAL PROGRAMS FEE CARD */
+
+.professional-program-card-fee-wrapper {
+    background: rgb(75, 56, 166);
+    background: linear-gradient(
+        90deg,
+        rgba(75, 56, 166, 1) 0%,
+        rgba(108, 91, 196, 1) 49%,
+        rgba(140, 125, 225, 1) 100%
+    );
+    flex-grow: 1;
+}
+
+/* MAIN */
+
+/* TABLE */
+
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+    color: #54546d;
+}
+
+.table-content-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 8px;
+}
+
+.table-heading {
+    font-weight: 500;
+}
+
+.main-table {
+    border-radius: 15px;
+    border-collapse: collapse;
+}
+
+.main-table tr:first-child td:first-child {
+    border-top-left-radius: 8px;
+}
+.main-table tr:first-child td:last-child {
+    border-top-right-radius: 8px;
+}
+.main-table tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+.main-table tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+.main-table tr:nth-child(odd) {
+    background: #e6e6e6;
+}
+
+.main-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.table-details {
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.main-table-row-text {
+    padding: 15px 78px 15px 12px;
+}
+
+.main-table-row-svg {
+    padding: 15px 53px;
+}
+
+/* FINANCING */
+
+.financing-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 90px;
+}
+
+.financing-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1252px;
+    color: #54546d;
+}
+
+.financing-content-text {
+    flex-basis: 72%;
+}
+
+/* FOOTER */
+
+.site-footer {
+    display: flex;
+    justify-content: center;
+    background: #54546d;
+    padding: 25px 0;
+}
+
+.footer-content {
+    color: #8c8ba7;
+    font-weight: 500;
+}

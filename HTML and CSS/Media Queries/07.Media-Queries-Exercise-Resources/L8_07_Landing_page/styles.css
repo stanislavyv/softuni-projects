@@ -1,0 +1,393 @@
+@import url(https://use.fontawesome.com/releases/v5.15.4/css/all.css);
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Georgia, serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.site-header-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 30px;
+}
+
+.site-header-logo {
+    margin: 0 19px;
+}
+
+.site-header-logo h1 {
+    font-size: 26px;
+    color: #800080;
+    margin: 0;
+}
+
+.site-header-logo-details {
+    color: #44484b;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-size: 11px;
+}
+
+.site-header-nav {
+    display: flex;
+    margin-left: 10px;
+}
+
+.site-header-nav ul {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.site-header-nav-item {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.site-header-menu {
+    display: none;
+}
+
+@media all and (max-width: 800px) {
+    body {
+        font-size: 14px;
+    }
+
+    .site-header-nav {
+        display: none;
+    }
+
+    .site-header-menu {
+        display: inline-block;
+        position: relative;
+    }
+
+    .site-header-menu i {
+        position: absolute;
+        left: -17px;
+        top: 1px;
+    }
+}
+
+@media all and (max-width: 470px) {
+    .site-header-wrapper {
+        justify-content: space-between;
+        margin: 10px 10px;
+    }
+
+    .site-header-logo h1 {
+        font-size: 21px;
+    }
+
+    .site-header-logo-details {
+        font-size: 9px;
+    }
+}
+
+.need-a-website {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 20px 30px 20px;
+}
+
+.need-a-website-text {
+    flex-basis: 39%;
+}
+
+.need-a-website-heading {
+    font-family: Georgia, serif;
+}
+
+.need-a-website-details {
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.need-a-website-button {
+    text-decoration: none;
+    color: black;
+    padding: 4px 15px;
+    border-radius: 4px;
+    border: 2px solid black;
+}
+
+.need-a-website-image {
+    margin-left: 25px;
+}
+
+.need-a-website-image img {
+    width: 100%;
+    max-width: 160px;
+    min-width: 100px;
+}
+
+@media all and (max-width: 800px) {
+    .need-a-website-button {
+        font-size: 12px;
+    }
+
+    .need-a-website-image img {
+        width: 80%;
+    }
+}
+
+@media all and (max-width: 470px) {
+    .need-a-website-text {
+        flex-basis: auto;
+    }
+}
+
+.our-team,
+.testimonials {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.our-team-heading,
+.testimonials-heading {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 18px auto 25px auto;
+    text-align: center;
+    position: relative;
+}
+
+.our-team-heading::after,
+.testimonials-heading::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 91px;
+    background: black;
+    bottom: -13px;
+}
+
+.our-team-cards,
+.testimonials-cards {
+    display: flex;
+    flex-direction: row;
+    max-width: 878px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.our-team-card,
+.testimonials-card {
+    max-width: 260px;
+    padding: 0 15px;
+    margin: 10px auto;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.our-team-card-image,
+.testimonials-card-image {
+    margin-bottom: 15px;
+}
+
+.our-team-card-image img,
+.testimonials-card-image img {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 9px 2px #9c9c9c;
+}
+
+.our-team-card-data,
+.testimonials-card-data {
+    margin: 15px 0;
+}
+
+[class^="our-team-card-data-"],
+[class^="testimonials-card-data-"] {
+    text-align: center;
+}
+
+.our-team-card-data-name,
+.testimonials-card-data-name {
+    font-weight: bold;
+}
+
+.our-team-card-data-position,
+.testimonials-card-data-position {
+    color: #323232;
+}
+
+.our-team-card-details,
+.testimonials-card-details {
+    font-style: italic;
+    text-align: center;
+}
+
+.newsletter-form-wrapper {
+    display: flex;
+    background: #68347b;
+    padding-bottom: 29px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-form-heading {
+    color: white;
+    font-weight: normal;
+    font-size: 32px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.newsletter-form-heading::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 91px;
+    background: black;
+    bottom: -16px;
+    left: 135px;
+}
+
+.newsletter-form-input-wrapper {
+    display: flex;
+    margin-top: 25px;
+}
+
+.newsletter-form-input-email {
+    flex-grow: 10;
+    margin-right: 4px;
+    height: 25px;
+}
+
+.newsletter-form-input-btn {
+    flex-grow: 1;
+    background: white;
+    font-weight: bold;
+    border: 1px solid grey;
+}
+
+@media all and (max-width: 800px) {
+    .newsletter-form-heading {
+        font-size: 26px;
+    }
+
+    .newsletter-form-heading::after {
+        left: 103px;
+    }
+}
+
+.testimonials {
+    margin-bottom: 80px;
+}
+
+.site-footer {
+    box-shadow: inset 0px 20px 20px 0px #e2e2e2;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.footer-summary,
+.footer-sitemap,
+.footer-contacts {
+    margin: 0 20px;
+}
+
+.footer-summary {
+    flex-basis: 26%;
+}
+
+.footer-summary-heading {
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.footer-sitemap {
+    flex-basis: 32%;
+}
+
+.footer-sitemap-nav {
+    padding-left: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-sitemap-nav li {
+    margin: 3px 0;
+}
+
+.footer-sitemap-nav-second-col {
+    flex-basis: 54%;
+}
+
+.footer-contacts {
+    flex-basis: 22%;
+}
+
+.footer-contacts-data {
+    padding-left: 33px;
+}
+
+.footer-contacts-data p {
+    margin: 5px 0;
+}
+
+[class^="footer-contacts-data-"] {
+    position: relative;
+}
+
+.footer-contacts-data i {
+    position: absolute;
+    left: -25px;
+}
+
+@media all and (max-width: 800px) {
+    .site-footer {
+        flex-direction: column;
+    }
+
+    .footer-sitemap-nav-first-col {
+        flex-basis: 76%;
+    }
+
+    .footer-sitemap-nav-second-col {
+        flex-basis: 32%;
+    }
+}

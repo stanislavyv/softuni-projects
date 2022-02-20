@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #eee;
+    font-family: Helvetica, sans-serif;
+    margin: 60px auto;
+    width: 80%;
+}
+
+header,
+footer {
+    flex-basis: 100%;
+    padding-bottom: 60px;
+}
+
+main,
+aside {
+    padding-bottom: 250px;
+}
+
+main {
+    flex-grow: 3;
+}
+
+aside {
+    flex-grow: 1;
+}
+
+.container {
+    border-radius: 6px;
+    box-shadow: 0 0 2px 1px gray;
+    background-color: white;
+    margin: 10px;
+}
+
+.container p {
+    padding-left: 20px;
+}

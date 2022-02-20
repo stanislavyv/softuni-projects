@@ -1,0 +1,129 @@
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5;
+    font-size: 26px;
+    background-color: rgb(238, 238, 238);
+}
+
+.content-wrapper {
+    margin: 60px auto;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p,
+a,
+blockquote {
+    font-size: 0.6em;
+}
+
+header {
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+    flex-basis: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 153, 0);
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+li {
+    list-style: square;
+    font-size: 0.7em;
+}
+
+.main-content {
+    flex-basis: 75%;
+}
+
+.site-title {
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    font-size: 1.2em;
+}
+
+.article-heading {
+    font-family: Georgia, serif;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 20px 0 8px 0;
+}
+
+.article-image {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 2px 20px 6px rgb(0 0 0 / 25%);
+    padding: 5px;
+    border: 3px solid black;
+}
+
+.first-image {
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.blockquote-container {
+    margin-top: 18px;
+    margin-bottom: 7px;
+}
+
+.blockquote-container-text,
+.quote {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+}
+
+.quote {
+    color: rgb(151, 151, 151);
+    font-style: italic;
+    border-left: 4px solid lightgray;
+    padding-left: 35px;
+    padding-bottom: 15px;
+    margin-left: 25px;
+}
+
+.author-name {
+    display: block;
+    text-align: right;
+}
+
+.second-image {
+    float: left;
+    margin: 4px 20px 15px 0px;
+}
+
+.sidebar {
+    margin-left: 72px;
+    flex-basis: 19%;
+}
+
+.sidebar-nav-list {
+    margin: 10px 0;
+}
+
+.sidebar-nav-heading {
+    font-size: 0.9em;
+}
+
+.sidebar-nav-list-item {
+    font-size: 0.9em;
+    list-style: square;
+}

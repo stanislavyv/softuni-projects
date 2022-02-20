@@ -1,0 +1,29 @@
+html {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+article {
+    font-size: 26px;
+    flex-basis: 14%;
+    margin: 0 25px;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    font-size: 1em;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+}

@@ -1,0 +1,40 @@
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    background: #eee;
+}
+
+body,
+ul,
+li {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    justify-content: space-between;
+}
+
+li {
+    border: 5px solid black;
+    box-shadow: 0 0 10px 0px black;
+    background: white;
+    margin: 26px 26px;
+    flex-basis: 30%;
+}
+
+li img {
+    object-fit: contain;
+    width: 100%;
+    padding: 30px 20px;
+}
+
+.gallery {
+    margin: 50px auto;
+}

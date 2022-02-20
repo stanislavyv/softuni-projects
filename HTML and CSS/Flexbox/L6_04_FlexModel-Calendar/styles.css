@@ -1,0 +1,53 @@
+html {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+div,
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div {
+    width: 100%;
+    max-width: 65vw;
+    margin: 50px auto;
+    border: 1px solid black;
+}
+
+span {
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px 15px 81px 15px;
+}
+
+.week {
+    flex-grow: 3;
+}
+
+.week-header,
+.notes span {
+    font-weight: bold;
+}
+
+.week-header {
+    flex-basis: 100%;
+}
+
+.week-day {
+    flex-grow: 1;
+}
+
+.notes {
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.notes span {
+    flex-grow: 1;
+}

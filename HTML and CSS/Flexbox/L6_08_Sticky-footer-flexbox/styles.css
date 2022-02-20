@@ -1,0 +1,46 @@
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    line-height: 1.5;
+    background: rgb(238, 238, 238);
+    height: 100vh;
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+header {
+    flex-basis: 100%;
+    border-bottom: 2px solid black;
+    padding: 20px 32px;
+}
+
+h2 {
+    font-size: 1.7em;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 2em;
+}
+
+.main-content {
+    padding: 20px 32px;
+}
+
+footer {
+    color: white;
+    background: rgb(102, 102, 102);
+    flex-basis: 100%;
+    padding: 20px 32px;
+}
