@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./аpp.module.css";
+import Navigation from "./components/navigation";
+// import styles from "./аpp.module.css";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -9,11 +10,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div className={styles.container}>
-                <div className={styles.app}>
-                    
-                </div>
-            </div>
+            <Navigation />
         );
     };
 }
