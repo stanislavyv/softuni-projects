@@ -42,7 +42,7 @@
 
 /* Link Styles */
 
-nav .listItem a {
+/* nav .listItem a {
     color: white;
     text-decoration: none;
 }
@@ -117,7 +117,7 @@ aside .listItem:hover {
     border-top: 2px solid #234465;
     border-bottom: 2px solid #234465;
     color: #ffa000;
-}
+} */
 
 /* Link Styles */
 
@@ -125,7 +125,7 @@ aside .listItem:hover {
 
 /* Aside Styles */
 
-.Aside {
+.aside {
     display: inline-block;
     width: 15%;
     margin-right: 1%;
