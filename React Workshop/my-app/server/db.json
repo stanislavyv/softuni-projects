@@ -12,6 +12,21 @@
         },
         {
             "id": 3,
+            "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laudantium molestias at facere reprehenderit",
+            "author": "Stamat"
+        },
+        {
+            "id": 4,
+            "content": "Some more content here earum quibusdam aliquid ex.",
+            "author": "Pesho"
+        },
+        {
+            "id": 5,
+            "content": "Even more content ut ipsam iste numquam. Vitae sapiente beatae atque.",
+            "author": "Gosho"
+        },
+        {
+            "id": 6,
             "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laudantium molestias at facere reprehenderit cum ut ipsam iste numquam. Vitae sapiente beatae atque. At aut maxime earum quibusdam aliquid ex.",
             "author": "Stamat"
         }
