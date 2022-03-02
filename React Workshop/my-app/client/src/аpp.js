@@ -1,5 +1,8 @@
 import React from "react";
+
 import Navigation from "./components/navigation";
+import Aside from "./components/aside";
+
 import styles from "./аpp.module.css";
 
 export default class App extends React.Component {
@@ -12,6 +15,7 @@ export default class App extends React.Component {
         return (
             <div className={styles.container}>
                 <Navigation />
+                <Aside />
             </div>
         );
     };
