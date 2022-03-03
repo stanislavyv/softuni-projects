@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Post from "../post";
 
 import styles from "./index.module.css";
 import postService from '../../utils/postService';
@@ -12,20 +12,20 @@ class Posts extends React.Component {
     
     async componentDidMount() {
         let res = await postService.getAllPosts();
-        this.setState(res);
+        this.setState( {posts: res} );
     }
 
-    // const renderPosts = () => {
-    //     return this.state.posts
-    //         .map(p => {
-    //             <
-    //         })
-    // }
+    renderPosts = () => {
+        return this.state.posts
+            .map(p => {
+                return <Post key={p.id} content={p.content} author={p.author} />
+            });
+    }
     
     render() { 
         return (
             <section className={styles.posts}>
-                hi
+                {this.renderPosts()}
             </section>
         );
     }
