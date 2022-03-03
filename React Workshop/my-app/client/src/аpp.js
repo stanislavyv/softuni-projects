@@ -3,6 +3,7 @@ import React from "react";
 import Navigation from "./components/navigation";
 import Aside from "./components/aside";
 import Main from "./components/main";
+import Footer from "./components/footer";
 
 import styles from "./аpp.module.css";
 
@@ -18,6 +19,7 @@ export default class App extends React.Component {
                 <Navigation />
                 <Aside />
                 <Main />
+                <Footer />
             </div>
         );
     };
