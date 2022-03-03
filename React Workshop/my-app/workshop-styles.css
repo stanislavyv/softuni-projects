@@ -140,11 +140,10 @@ aside .listItem:hover {
 
 /* Main Styles */
 
-.Main {
+/* .main {
     display: inline-block;
     width: 83%;
     height: auto;
-    /* border:1px solid blue; */
     margin-bottom: 5%;
 }
 
@@ -153,7 +152,7 @@ h1 {
     color: #234465;
     text-decoration: underline;
     margin-bottom: 2%;
-}
+} */
 
 /* Main Styles */
 
@@ -161,11 +160,10 @@ h1 {
 
 /* Posts Styles */
 
-.Posts {
+/* .posts {
     width: 100%;
-    /* border:1px solid red; */
     height: 45vh;
-}
+} */
 
 /* Posts Styles */
 
