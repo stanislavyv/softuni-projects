@@ -1,11 +1,11 @@
-import DashboardPet from "../dashboard-pet";
+import DashboardPetCard from "../dashboard-pet-card";
 
 const DashboardPetsList = () => {
     return (
         <ul class="other-pets-list">
-            <DashboardPet />
-            <DashboardPet />
-            <DashboardPet />
+            <DashboardPetCard />
+            <DashboardPetCard />
+            <DashboardPetCard />
         </ul>
     );
 };
