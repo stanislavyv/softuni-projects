@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const DashboardPetCard = (props) => {
+const PetCard = (props) => {
     return (
         <li className="otherPet">
         <h3>Name: {props.name}</h3>
@@ -17,13 +17,13 @@ const DashboardPetCard = (props) => {
                     <i className="fas fa-heart"></i> Pet
                 </button></a
             >
-            <a href="#"
-                ><button className="button">Details</button></a
-            >
+            <Link to={`/details/${props.id}`}>
+                <button className="button">Details</button>
+            </Link>
             <i className="fas fa-heart"></i> <span>{props.likes}</span>
         </div>
         </li>
     );
 };
 
-export default DashboardPetCard;
+export default PetCard;
