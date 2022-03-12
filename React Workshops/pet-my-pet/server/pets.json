@@ -3,7 +3,7 @@
         {
             "id": "5bb0888ee1d636567dc9f627",
             "name": "Yara",
-            "description": "My dog Yara. 2 months old. doggy hjkhjk",
+            "description": "My dog Yara. 2 months old. doggy.",
             "imageURL": "https://cdn1-www.dogtime.com/assets/uploads/2017/09/pit-bull-puppies-2.jpg",
             "category": "dog",
             "likes": "3"
@@ -28,15 +28,15 @@
             "id": "5bb08c9453e0a859203640fe",
             "name": "Tommy",
             "description": "This is my cat Tomy. He is 1 year old and likes to play with my snake Snaky",
-            "imageURL": "https://www.bluecross.org.uk/sites/default/files/assets/images/finding%20the%20right%20cat%20for%20you.jpg",
+            "imageURL": "https://thumbs.dreamstime.com/b/tommy-tommy-cat-116162654.jpg",
             "category": "cat",
             "likes": "4"
         },
         {
             "id": "5bb08d1353e0a859203643e6",
             "name": "Timmy",
-            "description": "This is my cat Timmy. He is 2 months old and is very playful.йкнкй",
-            "imageURL": "https://d3pz1jifuab5zg.cloudfront.net/2015/09/04194922/kitten-walking-150904.jpg",
+            "description": "This is my cat Timmy. He is 2 months old and is very playful.",
+            "imageURL": "https://www.cathouseonthekings.com/animals/70/a_020570_1602187751.jpg",
             "category": "cat",
             "likes": "2"
         },
@@ -44,7 +44,7 @@
             "id": "5bb096b542b2cd1521b211be",
             "name": "Lilly",
             "description": "This is my cat Lilly. She is 2 years old and is lazy",
-            "imageURL": "https://www.bluecross.org.uk/sites/default/files/assets/images/124044lpr.jpg",
+            "imageURL": "https://justsomething.co/wp-content/uploads/2018/07/this-is-lilly-the-cat-with-weird-eyebrows-who-looks-like-she-s-always-judging-you-04.jpg",
             "category": "cat",
             "likes": "7"
         },

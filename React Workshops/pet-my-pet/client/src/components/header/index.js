@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -6,7 +7,7 @@ const Header = () => {
             <nav className="navbar">
                     <section className="navbar-dashboard">
                         <div className="first-bar">
-                            <a href="#">Dashboard</a>
+                            <Link to="/">Dashboard</Link>
                             <a className="button" href="#">My Pets</a>
                             <a className="button" href="#">Add Pet</a>
                         </div>
@@ -16,14 +17,13 @@ const Header = () => {
                                 <li>
                                     <a href="#"
                                         ><i className="fas fa-sign-out-alt"></i>
-                                        Logout</a
-                                    >
+                                        Logout</a>
                                 </li>
                             </ul>
                         </div>
                     </section>
             </nav>
-            <><style jsx>{`
+            <style jsx>{`
                 nav.navbar {
                 display: flex;
                 flex-wrap: wrap;
@@ -115,11 +115,9 @@ const Header = () => {
                     display: flex;
                 }
             `}
-            </style></>
+            </style>
         </header>
     )
 }
-
-
 
 export default Header;
