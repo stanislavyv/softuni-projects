@@ -102,6 +102,10 @@ img {
     font-weight: bold;
 }
 
+.detailsOtherPet .button {
+    margin-left: 5px;
+}
+
 .dashboard > nav > ul {
     display: flex;
 }

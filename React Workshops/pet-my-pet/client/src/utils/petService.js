@@ -1,6 +1,7 @@
 const petService = () => {
+    const url = 'http://localhost:5000/pets';
+    
     const getAll = function (category) {
-        const url = 'http://localhost:5000/pets';
         const queryString = category ? `?category=${category}` : '';
 
         const pets = fetch(`${url}${queryString}`)
@@ -10,7 +11,18 @@ const petService = () => {
         return pets;
     }
 
-    return { getAll };
+    const getById = function (id = '') {
+        const queryString = `?id=${id}`;
+
+        const pet = fetch(`${url}${queryString}`)
+                        .then(res => res.json())
+                        .then(res => res[0])
+                        .catch(console.log)
+
+        return pet;
+    }
+
+    return { getAll, getById };
 };
 
 export default petService();
