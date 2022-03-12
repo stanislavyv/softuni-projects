@@ -130,6 +130,10 @@ h3 {
     padding-bottom: 1rem;
 }
 
+.pet-info .button {
+    margin-right: 3px;
+}
+
 .deletePet > form,
 .detailsMyPet > form {
     display: flex;
