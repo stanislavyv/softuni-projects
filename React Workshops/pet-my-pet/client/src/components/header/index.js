@@ -7,7 +7,7 @@ const Header = () => {
             <nav className="navbar">
                     <section className="navbar-dashboard">
                         <div className="first-bar">
-                            <Link to="/">Dashboard</Link>
+                            <Link to="/pets">Dashboard</Link>
                             <a className="button" href="#">My Pets</a>
                             <a className="button" href="#">Add Pet</a>
                         </div>

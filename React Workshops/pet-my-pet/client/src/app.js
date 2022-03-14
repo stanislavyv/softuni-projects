@@ -1,5 +1,5 @@
 import './app.css';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate} from "react-router-dom";
 
 import Header from './components/header';
 import Dashboard from './components/dashboard';
@@ -12,9 +12,10 @@ function App() {
         <Header />
 
         <Routes>
-            <Route path='/' element={<Dashboard />} />
-            <Route path='/:category' element={<Dashboard />} />
-            <Route path='/details/:id' element={<PetDetails />} />
+            <Route path='/pets' element={<Dashboard />} />
+            <Route path='/pets/categories/:category' element={<Dashboard />} />
+            <Route path='/pets/details/:id' element={<PetDetails />} />
+            <Route path="*" element={<Navigate to="/pets"/>} />
         </Routes>
         
         <Footer /> 
