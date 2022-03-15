@@ -11,7 +11,6 @@ const PetDetails = () => {
         petService
             .getById(id)
             .then(res => {
-                console.log(res);
                 return setPet(res)});
     }, [id]);
 
@@ -23,12 +22,13 @@ const PetDetails = () => {
                 <a href="#"
                     ><button className="button">
                         <i className="fas fa-heart"></i> Pet
-                    </button></a
-                >
+                    </button>
+                </a>
             </p>
             <p className="img">
                 <img
                     src={pet.imageURL}
+                    alt="Pet"
                 />
             </p>
             <p className="description">{pet.description}</p>
