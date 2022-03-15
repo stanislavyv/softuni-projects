@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Button from '../shared/button';
 
 const PetCard = (props) => {
     return (
@@ -18,7 +19,7 @@ const PetCard = (props) => {
                 </button></a
             >
             <Link to={`/details/${props.id}`}>
-                <button className="button">Details</button>
+                <Button text='Details' />
             </Link>
             <i className="fas fa-heart"></i> <span>{props.likes}</span>
         </div>
