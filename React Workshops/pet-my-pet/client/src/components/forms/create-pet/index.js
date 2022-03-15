@@ -16,7 +16,7 @@ const CreatePet = () => {
         const descriptionValue = e.target.value;
 
         if (!formValidator.isDescriptionValid(descriptionValue)) {
-            setErrorMessage('Description too short!');
+            setErrorMessage('Description is too short!');
         } else {
             setErrorMessage('');
         }

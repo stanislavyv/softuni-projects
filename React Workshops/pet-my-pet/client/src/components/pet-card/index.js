@@ -18,8 +18,8 @@ const PetCard = (props) => {
                     <i className="fas fa-heart"></i> Pet
                 </button></a
             >
-            <Link to={`/details/${props.id}`}>
-                <Button text='Details' />
+            <Link to={`/pets/edit/${props.id}`}>
+                <button className="button">Details</button>
             </Link>
             <i className="fas fa-heart"></i> <span>{props.likes}</span>
         </div>
