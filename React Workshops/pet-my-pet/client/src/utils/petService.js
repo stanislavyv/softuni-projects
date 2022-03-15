@@ -34,7 +34,19 @@ const petService = () => {
         .catch(console.log);
     };
 
-    return { getAll, getById, create };
+    const edit = function (id, newDescription) {
+        return fetch(`${url}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+               },
+            body: JSON.stringify({ description: newDescription } )
+        })
+        .then(res => res.json())
+        .catch(console.log);
+    }
+
+    return { getAll, getById, create, edit};
 };
 
 export default petService();
