@@ -131,6 +131,8 @@ h3 {
 }
 
 .pet-info {
+    display: flex;
+    align-items: center;
     padding-bottom: 1rem;
 }
 

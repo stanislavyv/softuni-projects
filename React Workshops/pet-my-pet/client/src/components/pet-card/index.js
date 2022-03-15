@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../shared/button';
+import PetButton from '../pet-button';
 
 const PetCard = (props) => {
+    const [likes, setLikes] = useState(props.likes);
+    
+    const likesCallback= (newLikes) => {
+        setLikes(newLikes);
+    };
+
     return (
         <li className="otherPet">
         <h3>Name: {props.name}</h3>
@@ -13,15 +20,11 @@ const PetCard = (props) => {
         </p>
         <p className="description">{props.description}</p>
         <div className="pet-info">
-            <a href="#"
-                ><button className="button">
-                    <i className="fas fa-heart"></i> Pet
-                </button></a
-            >
+            <PetButton id={props.id} parentCallback={likesCallback}/>
             <Link to={`/pets/edit/${props.id}`}>
                 <button className="button">Details</button>
             </Link>
-            <i className="fas fa-heart"></i> <span>{props.likes}</span>
+            <i className="fas fa-heart"></i> <span>{likes}</span>
         </div>
         </li>
     );

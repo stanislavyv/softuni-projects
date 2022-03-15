@@ -1,15 +1,13 @@
-import { useState } from 'react';
 import petService from '../../utils/petService'
 import Button from '../shared/button';
 
-const PetButton = ({id}) => {
-    const [likes, setLikes] = useState(0);
-    
+const PetButton = ({ id, parentCallback }) => {
     const onPetClickHandler = () => {
-        petService.like()
-            .then(res => {
-
-            );
+        petService.getById(id)
+            .then(pet => {
+                petService.like(pet)
+                    .then(pet => parentCallback(pet.likes));
+            });
     };
     
     return (

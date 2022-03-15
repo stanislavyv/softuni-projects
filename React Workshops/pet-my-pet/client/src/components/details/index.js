@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import petService from '../../utils/petService';
+import PetButton from '../pet-button';
 
 const PetDetails = () => {
     const { id } = useParams();
     const [pet, setPet] = useState({});    
+    const [likes, setLikes] = useState(pet.likes);
     
     useEffect(() => {
         petService
@@ -14,16 +16,16 @@ const PetDetails = () => {
                 return setPet(res)});
     }, [id]);
 
+    const likesCallback = (newLikes) => {
+        setLikes(newLikes);
+    };
+
     return (
         <section className="detailsOtherPet">
             <h3>{pet.name}</h3>
             <p>
-                Pet counter: {pet.likes}
-                <a href="#"
-                    ><button className="button">
-                        <i className="fas fa-heart"></i> Pet
-                    </button>
-                </a>
+                Pet counter: {likes}
+                <PetButton id={id} parentCallback={likesCallback}/>
             </p>
             <p className="img">
                 <img
