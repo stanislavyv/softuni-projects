@@ -46,7 +46,26 @@ const petService = () => {
         .catch(console.log);
     }
 
-    return { getAll, getById, create, edit};
+    const like = function ({ likes, id }) {
+        console.log(likes);
+        return fetch(`${url}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ likes: Number(likes) + 1 })
+        })
+        .then(res => res.json())
+        .catch(console.log);
+    };
+
+    return { 
+        getAll,
+        getById,
+        create,
+        edit,
+        like
+    };
 };
 
 export default petService();
