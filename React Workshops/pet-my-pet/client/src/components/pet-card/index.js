@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Button from '../shared/button';
 
 const PetCard = (props) => {
     return (
