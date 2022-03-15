@@ -9,7 +9,7 @@ const Header = () => {
                         <div className="first-bar">
                             <Link to="/pets">Dashboard</Link>
                             <a className="button" href="#">My Pets</a>
-                            <a className="button" href="#">Add Pet</a>
+                            <Link className="button" to="/pets/create">Add Pet</ Link>
                         </div>
                         <div className="second-bar">
                             <ul>
@@ -48,7 +48,6 @@ const Header = () => {
                 #site-header > nav > section.navbar-dashboard > ul > li:nth-child(1) > a {
                     margin-right: 0.5rem;
                 }
-
                 nav.navbar ul {
                     background: transparent;
                     padding: 0.5rem;
@@ -76,7 +75,6 @@ const Header = () => {
                     color: rgb(0, 0, 0);
                     font-weight: bold;
                 }
-
                 .dashboard nav {
                     background: transparent;
                 }

@@ -9,7 +9,7 @@ const petService = () => {
                         .catch(e => console.log(e));
 
         return pets;
-    }
+    };
 
     const getById = function (id = '') {
         const queryString = `?id=${id}`;
@@ -20,9 +20,21 @@ const petService = () => {
                         .catch(console.log)
 
         return pet;
-    }
+    };
 
-    return { getAll, getById };
+    const create = function (petObject) {
+        return fetch(url, {
+           method: 'POST',
+           headers: {
+            'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(petObject)
+        })
+        .then(res => res.json())
+        .catch(console.log);
+    };
+
+    return { getAll, getById, create };
 };
 
 export default petService();

@@ -4,6 +4,7 @@ import { Route, Routes, Navigate} from "react-router-dom";
 import Header from './components/header';
 import Dashboard from './components/dashboard';
 import PetDetails from './components/details';
+import CreatePet from './components/forms/create-pet';
 import Footer from './components/footer';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path='/pets' element={<Dashboard />} />
             <Route path='/pets/categories/:category' element={<Dashboard />} />
             <Route path='/pets/details/:id' element={<PetDetails />} />
+            <Route path='/pets/create' element={<CreatePet /> } />
             <Route path="*" element={<Navigate to="/pets"/>} />
         </Routes>
         
