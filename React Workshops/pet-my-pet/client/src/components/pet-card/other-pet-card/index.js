@@ -10,7 +10,7 @@ const OtherPetCard = (props) => {
 
     return (
         <li className="otherPet">
-            <PetCard props={props} type='other' parentCallback={likesCallback}/>
+            <PetCard props={ {...props, likes} } type='other' parentCallback={likesCallback}/>
         </li>
     );
 };

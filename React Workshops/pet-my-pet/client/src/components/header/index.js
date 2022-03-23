@@ -10,8 +10,12 @@ const Header = ( { isLoggedIn, username } ) => {
                     <section className="navbar-dashboard">
                         <div className="first-bar">
                             <Link to="/pets">Dashboard</Link>
-                            <Link to="/" className="button" href="#">My Pets</Link>
-                            <Link className="button" to="/pets/create">Add Pet</ Link>
+                            { isLoggedIn && 
+                              <>
+                                <Link to="/my-pets" className="button" href="#">My Pets</  Link>
+                                <Link className="button" to="/pets/create">Add Pet</   Link>
+                              </>
+                            }
                         </div>
                         
                         {isLoggedIn ? <HeaderLogged username={username} />

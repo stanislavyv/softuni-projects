@@ -8,7 +8,7 @@ import petService from "../../../utils/petService";
 
 import InputError from "../../shared/input-error";
 
-const CreatePet = () => {
+const CreatePet = ({ username }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     
@@ -28,8 +28,17 @@ const CreatePet = () => {
         const description= e.target.description.value;
         const imageURL = e.target.imageURL.value;
         const category = e.target.category.value;
+        const creator = username;
+        const peopleLiked = [];
 
-        const petObject = { name, description, imageURL, category, likes: 0};
+        const petObject = { name,
+                            description,
+                            imageURL,
+                            category,
+                            likes: 0,
+                            creator,
+                            peopleLiked
+        };
         petService.create(petObject);
         navigate('/pets');
     };

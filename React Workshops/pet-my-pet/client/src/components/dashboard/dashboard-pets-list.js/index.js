@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import OtherPetCard from "../../cards/other-pet-card";
+import OtherPetCard from "../../pet-card/other-pet-card";
 import petService from "../../../utils/petService";
 
 const DashboardPetsList = (props) => {

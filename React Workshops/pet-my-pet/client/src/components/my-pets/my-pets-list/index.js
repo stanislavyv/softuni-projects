@@ -1,26 +1,23 @@
 import { useEffect, useState } from 'react';
-import petService from '../../utils/petService'
-import PetCard from '../cards/other-pet-card';
+import petService from '../../../utils/petService'
+import MyPetCard from '../../pet-card/my-pet-card';
 
 const MyPetsList = ({ username }) => {
     const [pets, setPets] = useState([]);
 
     useEffect(() => {
-        setPets(getUserPets);
-    }, []);
-    
-    const getUserPets = (pets) => {
         petService
             .getAll()
             .then(pets => {
-                return pets.filter(p => p.creator === username)
+                const userPets = pets.filter(p => p.creator?.toLowerCase() === username.toLowerCase());
+                setPets(userPets);
             })
-    };
-
+    }, []);
+    
     return (
         <ul className="my-pets-list">
-            {pets.forEach(p => {
-                <PetCard {...p} />
+            {pets.map(p => {
+                return <MyPetCard key={p.id} {...p} />
             })}
         </ul>
     );

@@ -8,9 +8,7 @@
       "category": "dog",
       "likes": 17,
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     },
     {
       "id": "5bb08ba9e1d636567dca0767",
@@ -20,9 +18,7 @@
       "category": "parrot",
       "likes": "21",
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     },
     {
       "id": "5bb08bf342b2cd1521b1d5c2",
@@ -32,9 +28,7 @@
       "category": "other",
       "likes": "41",
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     },
     {
       "id": "5bb08c9453e0a859203640fe",
@@ -44,9 +38,7 @@
       "category": "cat",
       "likes": "41",
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     },
     {
       "id": "5bb08d1353e0a859203643e6",
@@ -56,9 +48,7 @@
       "category": "cat",
       "likes": 3,
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     },
     {
       "id": "5bb096b542b2cd1521b211be",
@@ -68,9 +58,7 @@
       "category": "cat",
       "likes": 72,
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     },
     {
       "id": "5bb08c47e541f21900d8a7a1",
@@ -80,21 +68,7 @@
       "category": "reptile",
       "likes": "5",
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
-    },
-    {
-      "name": "TestPet",
-      "description": "Grrr!",
-      "imageURL": "https://i.ytimg.com/vi/pFaYYV6Yy2M/maxresdefault.jpg",
-      "category": "Dog",
-      "likes": "2",
-      "id": "rl7SH9w",
-      "creator": "SomeGuy@abv.bg",
-      "peopleLiked": [
-          
-      ]
+      "peopleLiked": []
     }
   ]
 }

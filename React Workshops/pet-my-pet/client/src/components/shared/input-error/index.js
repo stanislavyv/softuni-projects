@@ -2,7 +2,7 @@ const InputError = ({ message }) => {
     return (
         <span>
             <span className="error">{message}</span>
-            <style jsx>{`
+            <style>{`
                     .error {
                         color: red;
                         font-weight: bold;

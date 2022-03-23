@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PetButton from '../buttons/pet-button'
 
-const PetCard = (props, type, parentCallback) => {
-
+const PetCard = ( { props, type, parentCallback } ) => {
     return (
         <>
             <h3>Name: {props.name}</h3>
@@ -26,8 +25,8 @@ const PetCard = (props, type, parentCallback) => {
                     </>
                   :
                     <>
-                        <a href='' onClick={parentCallback}>Delete</a>
-                        <Link to={`/pets/edit/${props.id}`}>Edit</Link>
+                        <a href='' className='button' onClick={parentCallback}>Delete</a>
+                        <Link to={`/pets/edit/${props.id}`} className='button' >Edit</Link>
                     </>
                 }
             </div>
