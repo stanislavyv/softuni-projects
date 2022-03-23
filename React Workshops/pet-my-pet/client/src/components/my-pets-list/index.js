@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import petService from '../../utils/petService'
-import PetCard from '../pet-card';
+import PetCard from '../cards/other-pet-card';
 
 const MyPetsList = ({ username }) => {
     const [pets, setPets] = useState([]);

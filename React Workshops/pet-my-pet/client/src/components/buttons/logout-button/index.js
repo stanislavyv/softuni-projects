@@ -1,4 +1,4 @@
-import authService from "../../utils/authService";
+import authService from "../../../utils/authService";
 
 const LogoutButton = () => {
     const onLogoutClickHandler = () => {

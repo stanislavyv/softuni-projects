@@ -44,7 +44,7 @@ const petService = () => {
         })
         .then(res => res.json())
         .catch(console.log);
-    }
+    };
 
     const like = function ({ likes, id }) {
         return fetch(`${url}/${id}`, {
@@ -58,12 +58,24 @@ const petService = () => {
         .catch(console.log);
     };
 
+    const deletePet = (id) => {
+        return fetch(`${url}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .catch(console.log);
+    };
+
     return { 
         getAll,
         getById,
         create,
         edit,
-        like
+        like,
+        deletePet
     };
 };
 

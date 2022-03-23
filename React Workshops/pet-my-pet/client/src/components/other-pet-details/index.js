@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import petService from '../../utils/petService';
-import PetButton from '../pet-button';
+import PetButton from '../buttons/pet-button';
 
 const OtherPetDetails = () => {
     const { id } = useParams();

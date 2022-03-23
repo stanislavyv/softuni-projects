@@ -1,5 +1,5 @@
-import petService from '../../utils/petService'
-import Button from '../shared/button';
+import petService from '../../../utils/petService'
+import Button from '../../shared/button';
 
 const PetButton = ({ id, parentCallback }) => {
     const onPetClickHandler = () => {

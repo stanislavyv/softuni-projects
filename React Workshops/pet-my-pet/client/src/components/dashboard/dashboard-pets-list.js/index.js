@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PetCard from "../../pet-card";
+import OtherPetCard from "../../cards/other-pet-card";
 import petService from "../../../utils/petService";
 
 const DashboardPetsList = (props) => {
@@ -18,7 +18,7 @@ const DashboardPetsList = (props) => {
     return (
         <ul className="other-pets-list">
             {pets?.map(pet => {
-                return <PetCard key={pet.id} {...pet} />
+                return <OtherPetCard key={pet.id} {...pet} />
             })}
         </ul>
     );

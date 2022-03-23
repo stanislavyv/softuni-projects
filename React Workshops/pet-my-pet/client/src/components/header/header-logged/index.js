@@ -1,4 +1,4 @@
-import LogoutButton from '../../logout-button'
+import LogoutButton from '../../buttons/logout-button'
 
 const HeaderLogged = ({ username }) => {
     return (
