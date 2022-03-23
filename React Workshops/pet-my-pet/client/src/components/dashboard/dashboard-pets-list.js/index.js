@@ -17,7 +17,7 @@ const DashboardPetsList = (props) => {
 
     return (
         <ul className="other-pets-list">
-            {pets.map(pet => {
+            {pets?.map(pet => {
                 return <PetCard key={pet.id} {...pet} />
             })}
         </ul>

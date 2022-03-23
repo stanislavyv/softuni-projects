@@ -5,7 +5,7 @@ import PetButton from '../pet-button';
 const PetCard = (props) => {
     const [likes, setLikes] = useState(props.likes);
     
-    const likesCallback= (newLikes) => {
+    const likesCallback = (newLikes) => {
         setLikes(newLikes);
     };
 

@@ -1,29 +1,25 @@
-import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+import HeaderAnon from './header-anon';
+import HeaderLogged from './header-logged';
+
+const Header = ( { isLoggedIn, username } ) => {
     return (
         <header>
-            <nav className="navbar">
+           <nav className="navbar">
                     <section className="navbar-dashboard">
                         <div className="first-bar">
                             <Link to="/pets">Dashboard</Link>
-                            <a className="button" href="#">My Pets</a>
+                            <Link to="/" className="button" href="#">My Pets</Link>
                             <Link className="button" to="/pets/create">Add Pet</ Link>
                         </div>
-                        <div className="second-bar">
-                            <ul>
-                                <li>Welcome, Username!</li>
-                                <li>
-                                    <a href="#"
-                                        ><i className="fas fa-sign-out-alt"></i>
-                                        Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                        
+                        {isLoggedIn ? <HeaderLogged username={username} />
+                                    : <HeaderAnon />
+                        }
                     </section>
             </nav>
-            <style jsx>{`
+            <style>{`
                 nav.navbar {
                 display: flex;
                 flex-wrap: wrap;
