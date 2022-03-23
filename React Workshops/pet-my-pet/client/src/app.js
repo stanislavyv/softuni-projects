@@ -6,7 +6,7 @@ import { Route, Routes, Navigate} from "react-router-dom";
 
 import Header from './components/header';
 import Dashboard from './components/dashboard';
-import PetDetails from './components/details';
+import PetDetails from './components/other-pet-details';
 import CreatePet from './components/forms/create-pet';
 import EditPet from './components/forms/edit-pet';
 import RegisterForm from './components/forms/auth/register'
@@ -15,7 +15,6 @@ import Footer from './components/footer';
 
 import authService from './utils/authService';
 //TODO:
-// ADD HEADER ON STATE CHANGE FUNCTIONALITY
 // OTHER AUTH STUFF - NOTIFICATIONS, MY PETS PAGE, ADD AND 
 // DELETE FOR AUTHORIZED USERS ONLY, PET ONLY ONCE
 function App() {

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import petService from '../../utils/petService';
 import PetButton from '../pet-button';
 
-const PetDetails = () => {
+const OtherPetDetails = () => {
     const { id } = useParams();
     const [pet, setPet] = useState({});    
     const [likes, setLikes] = useState(pet.likes);
@@ -38,4 +38,4 @@ const PetDetails = () => {
     );    
 }
 
-export default PetDetails;
+export default OtherPetDetails;
