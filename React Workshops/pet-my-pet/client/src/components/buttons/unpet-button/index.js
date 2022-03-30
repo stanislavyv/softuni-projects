@@ -1,17 +1,22 @@
 import petService from '../../../utils/petService'
 import Button from '../../shared/button';
+import AuthContext from '../../../contexts/AuthContext';
+
+import { useContext } from 'react';
 
 const UnpetButton = ({ id, parentCallback }) => {
-    const onPetClickHandler = () => {
+    const {username} = useContext(AuthContext);
+    
+    const onUnpetClickHandler = () => {
         petService.getById(id)
             .then(pet => {
-                petService.unpet(pet)
+                petService.unpet(pet, username)
                     .then(pet => parentCallback(pet.likes));
             });
     };
     
     return (
-        <Button text="Pet" onClickHandler={onPetClickHandler}/>
+        <Button text="Unpet" onClickHandler={onUnpetClickHandler}/>
     );
 }
 

@@ -46,29 +46,52 @@ const petService = () => {
         .catch(console.log);
     };
 
-    const like = function ({ likes, id }) {
-        //TODO: Add and remove user form usersLiked list;
+    const updateLikesList = function (id, peopleLiked) {
         return fetch(`${url}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ peopleLiked })
+        })
+        .then(res => res.json())
+        .catch(console.log);
+    }
+
+    const like = async function ({ likes, id }, username) {
+        const res = await fetch(`${url}/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ likes: (Number(likes) + 1).toString() })
-        })
-        .then(res => res.json())
-        .catch(console.log);
+        });
+        
+        const resJson = await res.json();
+        const peopleLiked = await resJson.peopleLiked;
+        peopleLiked.push(username);
+
+        const petResult = await updateLikesList(id, peopleLiked);
+        return petResult;
     };
 
-    const unpet = ({ likes, id }) => {
-        return fetch(`${url}/${id}`, {
+    const unpet = async function ({ likes, id }, username) {
+        const res = await fetch(`${url}/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ likes: (Number(likes) - 1).toString() })
-        })
-        .then(res => res.json())
-        .catch(console.log);
+        });
+        
+        const resJson = await res.json();
+        const peopleLiked = await resJson.peopleLiked;
+
+        const userIndex = peopleLiked.indexOf(username);
+        peopleLiked.splice(userIndex, 1);
+
+        const petResult = await updateLikesList(id, peopleLiked);
+        return petResult;
     };
 
     const deletePet = (id) => {

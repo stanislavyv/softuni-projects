@@ -19,6 +19,7 @@ import authService from './utils/authService';
 //TODO:
 // NOTIFICATIONS, ADD AND 
 // DELETE FOR AUTHORIZED USERS ONLY, PET ONLY ONCE
+// AUTH GUARD AND ERROR BOUNDARY
 function App() {
   const [user, setUser] = useState(null);
 
