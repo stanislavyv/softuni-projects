@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom'
 
 import HeaderAnon from './header-anon';
 import HeaderLogged from './header-logged';
+import AuthContext from '../../contexts/AuthContext';
 
-const Header = ( { isLoggedIn, username } ) => {
+const Header = () => {
+    const {username, isLoggedIn} = useContext(AuthContext);
+    
     return (
         <header>
            <nav className="navbar">
