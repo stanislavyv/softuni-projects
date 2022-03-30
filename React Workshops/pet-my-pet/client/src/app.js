@@ -16,7 +16,7 @@ import Footer from './components/footer';
 
 import authService from './utils/authService';
 //TODO:
-// NOTIFICATIONS, MY PETS PAGE, ADD AND 
+// NOTIFICATIONS, ADD AND 
 // DELETE FOR AUTHORIZED USERS ONLY, PET ONLY ONCE
 function App() {
   const [user, setUser] = useState(null);
@@ -41,7 +41,7 @@ function App() {
             <Route path='/pets/edit/:id' element={<EditPet /> } />
             <Route path='/register' element={<RegisterForm />} />
             <Route path='/login' element={<LoginForm />} />
-            <Route path='/my-pets' element={<MyPets />} />
+            <Route path='/my-pets' element={<MyPets username={authInfo.username}/>} />
             <Route path="*" element={<Navigate to="/pets"/>} />
         </Routes>
         

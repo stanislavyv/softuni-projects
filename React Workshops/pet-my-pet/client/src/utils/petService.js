@@ -47,12 +47,25 @@ const petService = () => {
     };
 
     const like = function ({ likes, id }) {
+        //TODO: Add and remove user form usersLiked list;
         return fetch(`${url}/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ likes: (Number(likes) + 1).toString() })
+        })
+        .then(res => res.json())
+        .catch(console.log);
+    };
+
+    const unpet = ({ likes, id }) => {
+        return fetch(`${url}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ likes: (Number(likes) - 1).toString() })
         })
         .then(res => res.json())
         .catch(console.log);
@@ -75,6 +88,7 @@ const petService = () => {
         create,
         edit,
         like,
+        unpet,
         deletePet
     };
 };

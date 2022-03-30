@@ -1,9 +1,12 @@
-import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import PetButton from '../buttons/pet-button'
 
 const PetCard = ( { props, type, parentCallback } ) => {
+    // const hasAlreadyLiked = () => {
+    //     return props.usersLiked
+    //            .includes(username) ?? false;
+    // };
+    
     return (
         <>
             <h3>Name: {props.name}</h3>
@@ -16,7 +19,7 @@ const PetCard = ( { props, type, parentCallback } ) => {
             <p className="description">{props.description}</p>
             <div className="pet-info">
                 { type === 'other' ?
-                    <>
+                    <> //TODO: PetButton || UnpetButton
                         <PetButton id={props.id} parentCallback={parentCallback}/>
                         <Link to={`/pets/edit/${props.id}`}>
                             <button className="button">Details</button>

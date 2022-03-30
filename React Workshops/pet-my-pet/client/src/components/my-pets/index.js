@@ -1,11 +1,11 @@
 import MyPetsList from "./my-pets-list";
 
-const MyPets = () => {
+const MyPets = ({ username }) => {
     return (
         <section className="my-pets">
             <h1>My Pets</h1>
             <ul className="my-pets-list">
-                <MyPetsList username="SomeGuy@abv.bg"/>
+                <MyPetsList username={username}/>
             </ul>
         </section>
     );
