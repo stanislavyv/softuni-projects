@@ -2,8 +2,7 @@ import authService from "../../../utils/authService";
 
 const LogoutButton = () => {
     const onLogoutClickHandler = () => {
-        authService.logout()
-            .catch(console.log);
+        authService.logout();
     }
     
     return (

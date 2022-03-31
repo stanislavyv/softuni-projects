@@ -17,7 +17,7 @@ const EditPet = () => {
             .then(res => {
                 setPet(res);
             });
-    }, []);
+    }, [id]);
 
     const onDescriptionBlurHandler = (e) => {
         const descriptionValue = e.target.value;
@@ -35,7 +35,6 @@ const EditPet = () => {
 
         petService.edit(id, newDescription)
             .then(res => {
-                console.log(res);
                 setPet(res);
                 navigate('/pets');
             });

@@ -1,8 +1,10 @@
-import { getAuth,
-         onAuthStateChanged,
-         createUserWithEmailAndPassword,
-         signInWithEmailAndPassword,
-         signOut } from "firebase/auth";
+import {
+    getAuth,
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+} from "firebase/auth";
 
 const authService = () => {
     const auth = getAuth();
@@ -12,22 +14,26 @@ const authService = () => {
     };
 
     const createUser = (username, password) => {
-        return createUserWithEmailAndPassword(auth, username, password);
+        return createUserWithEmailAndPassword(auth, username, password).catch(
+            console.log
+        );
     };
 
     const signIn = (username, password) => {
-        return signInWithEmailAndPassword(auth, username, password);
+        return signInWithEmailAndPassword(auth, username, password).catch(
+            console.log
+        );
     };
 
     const logout = () => {
-        return signOut(auth);
+        return signOut(auth).catch(console.log);
     };
 
     return {
         onStateChange,
         createUser,
         signIn,
-        logout
+        logout,
     };
 };
 

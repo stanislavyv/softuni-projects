@@ -13,11 +13,7 @@ const RegisterForm = () => {
         const password = e.target.password.value;
 
         authService.createUser(username, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                navigate('/');
-            })
-            .catch(console.log);
+            .then(navigate('/'));
     };
 
     return (

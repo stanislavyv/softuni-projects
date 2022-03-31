@@ -13,11 +13,7 @@ const LoginForm = () => {
         const password = e.target.password.value;
 
         authService.signIn(username, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                navigate('/');
-            })
-            .catch(console.log);
+            .then(navigate('/'));
     };
 
     return (
