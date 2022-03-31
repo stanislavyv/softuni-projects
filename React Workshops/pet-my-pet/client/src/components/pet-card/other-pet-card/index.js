@@ -11,12 +11,15 @@ import petService from "../../../utils/petService";
 const OtherPetCard = (props) => {
     const [likes, setLikes] = useState(props.likes);
     const [hasAlreadyLiked, setHasAlreadyLiked] = useState(false);
-    const {username} = useContext(AuthContext);
+    const { username, isLoggedIn } = useContext(AuthContext);
 
     useEffect(() => {
-        petService.hasUserLikedPet(props.id, username)
-            .then(res => setHasAlreadyLiked(res));
-    }, [props.id, username]);
+        if (isLoggedIn) {
+            petService
+                .hasUserLikedPet(props.id, username)
+                .then((res) => setHasAlreadyLiked(res));
+        }
+    }, [props.id, username, isLoggedIn]);
 
     const petBtnCallback = (newLikes, newHasAlreadyLiked) => {
         setLikes(newLikes);
@@ -28,18 +31,22 @@ const OtherPetCard = (props) => {
             <PetCard props={props} />
             <div className="pet-info">
                 <>
-                    {hasAlreadyLiked ? (
-                        <UnpetButton
-                            id={props.id}
-                            hasAlreadyLiked={hasAlreadyLiked}
-                            parentCallback={petBtnCallback}
-                        />
-                    ) : (
-                        <PetButton
-                            id={props.id}
-                            hasAlreadyLiked={hasAlreadyLiked}
-                            parentCallback={petBtnCallback}
-                        />
+                    {isLoggedIn && (
+                        <>
+                            {hasAlreadyLiked ? (
+                                <UnpetButton
+                                    id={props.id}
+                                    hasAlreadyLiked={hasAlreadyLiked}
+                                    parentCallback={petBtnCallback}
+                                />
+                            ) : (
+                                <PetButton
+                                    id={props.id}
+                                    hasAlreadyLiked={hasAlreadyLiked}
+                                    parentCallback={petBtnCallback}
+                                />
+                            )}
+                        </>
                     )}
                     <Link to={`/pets/edit/${props.id}`}>
                         <button className="button">Details</button>
