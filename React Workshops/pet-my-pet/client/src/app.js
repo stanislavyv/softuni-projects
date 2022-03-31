@@ -21,6 +21,7 @@ import authService from './utils/authService';
 // DELETE FOR AUTHORIZED USERS ONLY, PET ONLY ONCE,
 // Show OtherPetCard or MyPetCard based on pet creator in Dashboard list
 // AUTH GUARD AND ERROR BOUNDARY
+// REMOVE EDIT ON DETAILS BUTTON AND LIKE/ UNLIKE FOR NON LOGGED-IN USERS
 function App() {
   const [user, setUser] = useState(null);
 
