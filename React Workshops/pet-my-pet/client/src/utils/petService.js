@@ -59,39 +59,47 @@ const petService = () => {
     }
 
     const like = async function ({ likes, id }, username) {
-        const res = await fetch(`${url}/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ likes: (Number(likes) + 1).toString() })
-        });
-        
-        const resJson = await res.json();
-        const peopleLiked = await resJson.peopleLiked;
-        peopleLiked.push(username);
-
-        const petResult = await updateLikesList(id, peopleLiked);
-        return petResult;
+        try {
+            const res = await fetch(`${url}/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ likes: (Number(likes) + 1).toString() })
+            });
+            
+            const resJson = await res.json();
+            const peopleLiked = await resJson.peopleLiked;
+            peopleLiked.push(username);
+    
+            updateLikesList(id, peopleLiked);
+            return resJson.likes;
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const unpet = async function ({ likes, id }, username) {
-        const res = await fetch(`${url}/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ likes: (Number(likes) - 1).toString() })
-        });
-        
-        const resJson = await res.json();
-        const peopleLiked = await resJson.peopleLiked;
-
-        const userIndex = peopleLiked.indexOf(username);
-        peopleLiked.splice(userIndex, 1);
-
-        const petResult = await updateLikesList(id, peopleLiked);
-        return petResult;
+        try {
+            const res = await fetch(`${url}/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ likes: (Number(likes) - 1).toString() })
+            });
+            
+            const resJson = await res.json();
+            const peopleLiked = await resJson.peopleLiked;
+    
+            const userIndex = peopleLiked.indexOf(username);
+            peopleLiked.splice(userIndex, 1);
+    
+            updateLikesList(id, peopleLiked);
+            return resJson.likes;
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const deletePet = (id) => {
@@ -105,6 +113,13 @@ const petService = () => {
         .catch(console.log);
     };
 
+    const hasUserLikedPet = (id, username) => {
+        return getById(id)
+              .then(pet => {
+                  return pet.peopleLiked.includes(username);
+              });
+    };
+
     return { 
         getAll,
         getById,
@@ -112,7 +127,8 @@ const petService = () => {
         edit,
         like,
         unpet,
-        deletePet
+        deletePet,
+        hasUserLikedPet
     };
 };
 

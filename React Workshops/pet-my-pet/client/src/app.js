@@ -18,7 +18,8 @@ import AuthContext from './contexts/AuthContext';
 import authService from './utils/authService';
 //TODO:
 // NOTIFICATIONS, ADD AND 
-// DELETE FOR AUTHORIZED USERS ONLY, PET ONLY ONCE
+// DELETE FOR AUTHORIZED USERS ONLY, PET ONLY ONCE,
+// Show OtherPetCard or MyPetCard based on pet creator in Dashboard list
 // AUTH GUARD AND ERROR BOUNDARY
 function App() {
   const [user, setUser] = useState(null);
