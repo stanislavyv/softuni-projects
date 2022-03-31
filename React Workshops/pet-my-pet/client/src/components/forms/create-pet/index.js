@@ -1,15 +1,17 @@
 import "../forms.css";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as formValidator from "../helpers/formValidator";
 import petService from "../../../utils/petService";
 
 import InputError from "../../shared/input-error";
+import AuthContext from "../../../contexts/AuthContext";
 
-const CreatePet = ({ username }) => {
+const CreatePet = () => {
     const [errorMessage, setErrorMessage] = useState('');
+    const {username} = useContext(AuthContext);
     const navigate = useNavigate();
     
     const onDescriptionBlurHandler = (e) => {

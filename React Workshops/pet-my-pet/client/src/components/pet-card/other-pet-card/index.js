@@ -1,4 +1,6 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
+import useLike from "../../../hooks/useLike";
+
 import { Link } from "react-router-dom";
 
 import PetCard from "..";
@@ -6,25 +8,9 @@ import PetButton from "../../buttons/pet-button";
 import UnpetButton from "../../buttons/unpet-button";
 import AuthContext from "../../../contexts/AuthContext";
 
-import petService from "../../../utils/petService";
-
 const OtherPetCard = (props) => {
-    const [likes, setLikes] = useState(props.likes);
-    const [hasAlreadyLiked, setHasAlreadyLiked] = useState(false);
-    const { username, isLoggedIn } = useContext(AuthContext);
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            petService
-                .hasUserLikedPet(props.id, username)
-                .then((res) => setHasAlreadyLiked(res));
-        }
-    }, [props.id, username, isLoggedIn]);
-
-    const petBtnCallback = (newLikes, newHasAlreadyLiked) => {
-        setLikes(newLikes);
-        setHasAlreadyLiked(newHasAlreadyLiked);
-    };
+    const {likes, hasAlreadyLiked, likeCallback} = useLike(props.id, props.likes);
+    const {isLoggedIn} = useContext(AuthContext);
 
     return (
         <li className="otherPet">
@@ -37,18 +23,18 @@ const OtherPetCard = (props) => {
                                 <UnpetButton
                                     id={props.id}
                                     hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={petBtnCallback}
+                                    parentCallback={likeCallback}
                                 />
                             ) : (
                                 <PetButton
                                     id={props.id}
                                     hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={petBtnCallback}
+                                    parentCallback={likeCallback}
                                 />
                             )}
                         </>
                     )}
-                    <Link to={`/pets/edit/${props.id}`}>
+                    <Link to={`/pets/${props.id}`}>
                         <button className="button">Details</button>
                     </Link>
                     <i className="fas fa-heart"></i> <span>{likes}</span>
