@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom'
+import useAuthContext from '../../hooks/useAuthContext';
 
 import HeaderAnon from './header-anon';
 import HeaderLogged from './header-logged';
-import AuthContext from '../../contexts/AuthContext';
 
 const Header = () => {
-    const {username, isLoggedIn} = useContext(AuthContext);
+    const {username, isLoggedIn} = useAuthContext();
     
     return (
         <header>

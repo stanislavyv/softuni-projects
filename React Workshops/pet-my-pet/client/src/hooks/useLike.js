@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+import useAuthContext from "./useAuthContext";
 
-import AuthContext from "../contexts/AuthContext";
 import petService from "../utils/petService";
 
 const useLike = (petId, initialLikes) => {
     const [likes, setLikes] = useState(initialLikes);
     const [hasAlreadyLiked, setHasAlreadyLiked] = useState(false);
-    const {username, isLoggedIn} = useContext(AuthContext);
+    const {username, isLoggedIn} = useAuthContext();
 
     useEffect(() => {
         setLikes(initialLikes);

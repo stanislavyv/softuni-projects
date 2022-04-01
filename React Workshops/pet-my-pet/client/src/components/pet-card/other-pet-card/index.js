@@ -1,17 +1,19 @@
-import { useContext } from "react";
 import useLike from "../../../hooks/useLike";
+import useAuthContext from "../../../hooks/useAuthContext";
 
 import { Link } from "react-router-dom";
 
 import PetCard from "..";
 import PetButton from "../../buttons/pet-button";
 import UnpetButton from "../../buttons/unpet-button";
-import AuthContext from "../../../contexts/AuthContext";
 
 const OtherPetCard = (props) => {
-    const {likes, hasAlreadyLiked, likeCallback} = useLike(props.id, props.likes);
-    const {isLoggedIn} = useContext(AuthContext);
-    
+    const { likes, hasAlreadyLiked, likeCallback } = useLike(
+        props.id,
+        props.likes
+    );
+    const { isLoggedIn } = useAuthContext();
+
     return (
         <li className="otherPet">
             <PetCard props={props} />

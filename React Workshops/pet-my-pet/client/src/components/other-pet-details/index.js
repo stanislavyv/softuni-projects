@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import usePet from "../../hooks/usePet";
 import useLike from "../../hooks/useLike";
+import useAuthContext from "../../hooks/useAuthContext";
 
 import PetButton from "../buttons/pet-button";
 import UnpetButton from "../buttons/unpet-button";
@@ -8,28 +9,31 @@ import UnpetButton from "../buttons/unpet-button";
 const OtherPetDetails = () => {
     const { id } = useParams();
     const pet = usePet(id);
-    const {likes, hasAlreadyLiked, likeCallback} = useLike(id, pet.likes);
+    const { likes, hasAlreadyLiked, likeCallback } = useLike(id, pet.likes);
+    const { isLoggedIn } = useAuthContext();
 
     return (
         <section className="detailsOtherPet">
             <h3>{pet.name}</h3>
             <p>
                 Pet counter: {likes}
-                <>
-                            {hasAlreadyLiked ? (
-                                <UnpetButton
-                                    id={id}
-                                    hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={likeCallback}
-                                />
-                            ) : (
-                                <PetButton
-                                    id={id}
-                                    hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={likeCallback}
-                                />
-                            )}
-                        </>
+                {isLoggedIn && (
+                    <>
+                        {hasAlreadyLiked ? (
+                            <UnpetButton
+                                id={id}
+                                hasAlreadyLiked={hasAlreadyLiked}
+                                parentCallback={likeCallback}
+                            />
+                        ) : (
+                            <PetButton
+                                id={id}
+                                hasAlreadyLiked={hasAlreadyLiked}
+                                parentCallback={likeCallback}
+                            />
+                        )}
+                    </>
+                )}
             </p>
             <p className="img">
                 <img src={pet.imageURL} alt="Pet" />

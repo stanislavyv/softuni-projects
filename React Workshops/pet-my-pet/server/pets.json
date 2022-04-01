@@ -6,11 +6,12 @@
       "description": "My dog Yara. 2 months old. doggy.",
       "imageURL": "https://cdn1-www.dogtime.com/assets/uploads/2017/09/pit-bull-puppies-2.jpg",
       "category": "dog",
-      "likes": "34",
+      "likes": "35",
       "creator": "SomeGuy@abv.bg",
       "peopleLiked": [
         "someguy@abv.bg",
-        "syv31@abv.bg"
+        "syv31@abv.bg",
+        null
       ]
     },
     {

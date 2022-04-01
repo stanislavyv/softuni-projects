@@ -1,14 +1,14 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+import useAuthContext from "../../../hooks/useAuthContext";
 
 import OtherPetCard from "../../pet-card/other-pet-card";
 import MyPetCard from "../../pet-card/my-pet-card";
-import AuthContext from "../../../contexts/AuthContext";
 
 import petService from "../../../utils/petService";
 
 const DashboardPetsList = (props) => {
     const [pets, setPets] = useState([]);
-    const { username, isLoggedIn } = useContext(AuthContext);
+    const { username, isLoggedIn } = useAuthContext();
 
     useEffect(() => {
         const category = props.category;

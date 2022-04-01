@@ -5,12 +5,12 @@ const usePet = (id) => {
     const [state, setState] = useState({});
 
     useEffect(() => {
-        petService
-            .getById(id)
-            .then(pet => setState(pet));
-    }, [id])
+        if (id) {
+            petService.getById(id).then((pet) => setState(pet));
+        }
+    }, [id]);
 
     return state;
-}
+};
 
 export default usePet;
