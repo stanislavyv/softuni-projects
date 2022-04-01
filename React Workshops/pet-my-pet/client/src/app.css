@@ -84,6 +84,12 @@ img {
     padding-top: 100%;
 }
 
+.custom-error {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .detailsOtherPet,
 .detailsMyPet,
 .deletePet,

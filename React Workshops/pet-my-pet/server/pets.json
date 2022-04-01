@@ -45,13 +45,12 @@
       "description": "This is my cat Tomy. He is 1 year old and likes to play with my snake Snaky",
       "imageURL": "https://thumbs.dreamstime.com/b/tommy-tommy-cat-116162654.jpg",
       "category": "cat",
-      "likes": "46",
+      "likes": "45",
       "creator": "SomeGuy@abv.bg",
       "peopleLiked": [
         "someguy@abv.bg",
         "someguy@abv.bg",
-        "someguy@abv.bg",
-        "syv31@abv.bg"
+        "someguy@abv.bg"
       ]
     },
     {

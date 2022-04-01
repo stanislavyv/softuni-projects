@@ -11,7 +11,7 @@ import AuthContext from "../../../contexts/AuthContext";
 const OtherPetCard = (props) => {
     const {likes, hasAlreadyLiked, likeCallback} = useLike(props.id, props.likes);
     const {isLoggedIn} = useContext(AuthContext);
-
+    
     return (
         <li className="otherPet">
             <PetCard props={props} />

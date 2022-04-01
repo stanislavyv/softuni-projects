@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import usePet from "../../hooks/usePet";
 import useLike from "../../hooks/useLike";
-//TODO: DON'T DELETE BRANCH AND UPDATE REDDIT QUESTION WHEN MAKING NEW CHANGES
+
 import PetButton from "../buttons/pet-button";
 import UnpetButton from "../buttons/unpet-button";
 

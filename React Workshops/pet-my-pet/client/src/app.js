@@ -3,8 +3,9 @@ import "./utils/firebase";
 
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import useUser from './hooks/useUser'
+import useUser from "./hooks/useUser";
 
+import CustomErrorBoundary from "./components/custom-error-boundary";
 import Header from "./components/header";
 import Dashboard from "./components/dashboard";
 import PetDetails from "./components/other-pet-details";
@@ -19,11 +20,8 @@ import Footer from "./components/footer";
 import AuthContext from "./contexts/AuthContext";
 
 //TODO:
-// NOTIFICATIONS, ADD AND
-// DELETE FOR AUTHORIZED USERS ONLY,
-// Show OtherPetCard or MyPetCard based on pet creator in Dashboard list
+// NOTIFICATIONS
 // AUTH GUARD AND ERROR BOUNDARY
-// REMOVE EDIT ON DETAILS BUTTON AND LIKE/ UNLIKE FOR NON LOGGED-IN USERS
 function App() {
     const authInfo = useUser();
 
@@ -31,25 +29,29 @@ function App() {
         <div>
             <AuthContext.Provider value={authInfo}>
                 <Header />
-                <Routes>
-                    <Route path="/pets" element={<Dashboard />} />
-                    <Route
-                        path="/pets/categories/:category"
-                        element={<Dashboard />}
-                    />
-                    <Route path="/pets/details/:id" element={<PetDetails />} />
-                    <Route
-                        path="/pets/create"
-                        element={<CreatePet />}
-                    />
-                    <Route path="/pets/edit/:id" element={<EditPet />} />
-                    <Route path="/register" element={<RegisterForm />} />
-                    <Route path="/login" element={<LoginForm />} />
-                    <Route path="/my-pets" element={<MyPets />} />
-                    <Route path="/pets/:id" element={<OtherPetDetails />} />
 
-                    <Route path="*" element={<Navigate to="/pets" />} />
-                </Routes>
+                <CustomErrorBoundary>
+                    <Routes>
+                        <Route path="/pets" element={<Dashboard />} />
+                        <Route
+                            path="/pets/categories/:category"
+                            element={<Dashboard />}
+                        />
+                        <Route
+                            path="/pets/details/:id"
+                            element={<PetDetails />}
+                        />
+                        <Route path="/pets/create" element={<CreatePet />} />
+                        <Route path="/pets/edit/:id" element={<EditPet />} />
+                        <Route path="/register" element={<RegisterForm />} />
+                        <Route path="/login" element={<LoginForm />} />
+                        <Route path="/my-pets" element={<MyPets />} />
+                        <Route path="/pets/:id" element={<OtherPetDetails />} />
+
+                        <Route path="*" element={<Navigate to="/pets" />} />
+                    </Routes>
+                </CustomErrorBoundary>
+
                 <Footer />
             </AuthContext.Provider>
         </div>

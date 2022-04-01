@@ -8,21 +8,19 @@ const useLike = (petId, initialLikes) => {
     const [hasAlreadyLiked, setHasAlreadyLiked] = useState(false);
     const {username, isLoggedIn} = useContext(AuthContext);
 
-    console.log('initial: ' + initialLikes);
-    console.log('stateLikes: ' + likes);
-    console.log('hasAlrLiked: ' + hasAlreadyLiked)
-    
+    useEffect(() => {
+        setLikes(initialLikes);
+    }, [initialLikes]);
+
     useEffect(() => {
         if (isLoggedIn) {
             petService
                 .hasUserLikedPet(petId, username)
                 .then((res) => {
-                    // TEMP SOLUTION
-                    setLikes(initialLikes);
                     setHasAlreadyLiked(res);
                 });
         }
-    }, [petId, initialLikes, username, isLoggedIn]);
+    }, [petId, username, isLoggedIn]);
 
     const likeCallback = (newLikes, newHasAlreadyLiked) => {
         setLikes(newLikes);
