@@ -18,10 +18,11 @@ import OtherPetDetails from "./components/other-pet-details";
 import Footer from "./components/footer";
 
 import AuthContext from "./contexts/AuthContext";
+import isAuth from "./hoc/isAuth";
 
 //TODO:
 // NOTIFICATIONS
-// AUTH GUARD AND ERROR BOUNDARY
+// ROUTE GUARD FOR EDITING PETS (ONLY CREATOR SHOULD EDIT)
 function App() {
     const authInfo = useUser();
 
@@ -41,11 +42,11 @@ function App() {
                             path="/pets/details/:id"
                             element={<PetDetails />}
                         />
-                        <Route path="/pets/create" element={<CreatePet />} />
-                        <Route path="/pets/edit/:id" element={<EditPet />} />
+                        <Route path="/pets/create" element={isAuth(<CreatePet />)} />
+                        <Route path="/pets/edit/:id" element={isAuth(<EditPet />)} />
                         <Route path="/register" element={<RegisterForm />} />
                         <Route path="/login" element={<LoginForm />} />
-                        <Route path="/my-pets" element={<MyPets />} />
+                        <Route path="/my-pets" element={isAuth(<MyPets />)} />
                         <Route path="/pets/:id" element={<OtherPetDetails />} />
 
                         <Route path="*" element={<Navigate to="/pets" />} />
