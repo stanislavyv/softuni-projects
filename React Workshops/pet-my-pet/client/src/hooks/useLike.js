@@ -16,9 +16,13 @@ const useLike = (petId, initialLikes) => {
         if (isLoggedIn) {
             petService
                 .hasUserLikedPet(petId, username)
-                .then((res) => setHasAlreadyLiked(res));
+                .then((res) => {
+                    // TEMP SOLUTION
+                    setLikes(initialLikes);
+                    setHasAlreadyLiked(res);
+                });
         }
-    }, [petId, username, isLoggedIn]);
+    }, [petId, initialLikes, username, isLoggedIn]);
 
     const likeCallback = (newLikes, newHasAlreadyLiked) => {
         setLikes(newLikes);

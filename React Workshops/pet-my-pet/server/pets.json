@@ -6,10 +6,11 @@
       "description": "My dog Yara. 2 months old. doggy.",
       "imageURL": "https://cdn1-www.dogtime.com/assets/uploads/2017/09/pit-bull-puppies-2.jpg",
       "category": "dog",
-      "likes": "33",
+      "likes": "34",
       "creator": "SomeGuy@abv.bg",
       "peopleLiked": [
-        "someguy@abv.bg"
+        "someguy@abv.bg",
+        "syv31@abv.bg"
       ]
     },
     {
@@ -44,12 +45,13 @@
       "description": "This is my cat Tomy. He is 1 year old and likes to play with my snake Snaky",
       "imageURL": "https://thumbs.dreamstime.com/b/tommy-tommy-cat-116162654.jpg",
       "category": "cat",
-      "likes": "45",
+      "likes": "46",
       "creator": "SomeGuy@abv.bg",
       "peopleLiked": [
         "someguy@abv.bg",
         "someguy@abv.bg",
-        "someguy@abv.bg"
+        "someguy@abv.bg",
+        "syv31@abv.bg"
       ]
     },
     {
