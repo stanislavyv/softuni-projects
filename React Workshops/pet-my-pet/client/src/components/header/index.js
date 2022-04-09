@@ -26,7 +26,7 @@ const Header = () => {
                         }
                     </section>
             </nav>
-            <style>{`
+            <style jsx>{`
                 nav.navbar {
                 display: flex;
                 flex-wrap: wrap;
