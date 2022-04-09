@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
 import useAuthContext from "../../../hooks/useAuthContext";
+import usePetService from "../../../hooks/usePetService";
 
 import OtherPetCard from "../../pet-card/other-pet-card";
 import MyPetCard from "../../pet-card/my-pet-card";
 
-import petService from "../../../utils/petService";
 
-const DashboardPetsList = (props) => {
+const DashboardPetsList = ({ category }) => {
     const [pets, setPets] = useState([]);
     const { username, isLoggedIn } = useAuthContext();
+    const { getAllPets } = usePetService();
 
     useEffect(() => {
-        const category = props.category;
-
-        petService.getAll(category).then((pets) => {
+        getAllPets(category).then((pets) => {
             setPets(pets);
         });
-    }, [props.category]);
+    }, [category]);
 
     return (
         <ul className="other-pets-list">

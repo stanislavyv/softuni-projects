@@ -1,10 +1,13 @@
+import usePetService from '../../../hooks/usePetService';
+
 import PetCard from "..";
 import { Link } from "react-router-dom";
-import petService from "../../../utils/petService";
 
 const MyPetCard = (props) => {
+    const { deletePet } = usePetService();
+    
     const deleteCallback = () => {
-        petService.deletePet(props.id);
+        deletePet(props.id);
     };
 
     return (

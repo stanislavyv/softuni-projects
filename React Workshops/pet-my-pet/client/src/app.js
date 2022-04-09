@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import "./app.css";
 import "./utils/firebase";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -22,7 +21,7 @@ import Footer from "./components/footer";
 
 import AuthContext from "./contexts/AuthContext";
 import { NotificationCtxProvider } from "./contexts/NotificationContext";
-import isAuth from "./hoc/isAuth";
+import AuthRoute from "./hoc/AuthRoute";
 
 //TODO:
 // NOTIFICATIONS
@@ -59,11 +58,11 @@ function App() {
                             />
                             <Route
                                 path="/pets/create"
-                                element={isAuth(<CreatePet />)}
+                                element={<AuthRoute children={<CreatePet />}/>}
                             />
                             <Route
                                 path="/pets/edit/:id"
-                                element={isAuth(<EditPet />)}
+                                element={<AuthRoute children={<EditPet />}/>}
                             />
                             <Route
                                 path="/register"
@@ -72,7 +71,7 @@ function App() {
                             <Route path="/login" element={<LoginForm />} />
                             <Route
                                 path="/my-pets"
-                                element={isAuth(<MyPets />)}
+                                element={<AuthRoute children={<MyPets {...authInfo}/>}/>}
                             />
                             <Route
                                 path="/pets/:id"

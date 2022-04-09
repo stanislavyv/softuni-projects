@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import usePetService from '../../../hooks/usePetService';
 
-import petService from '../../../utils/petService';
 import * as formValidator from '../helpers/formValidator';
 
 import InputError from '../../shared/input-error';
@@ -11,9 +11,10 @@ const EditPet = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
+    const { getPetById, editPet } = usePetService();
     
     useEffect(() => {
-        petService.getById(id)
+        getPetById(id)
             .then(res => {
                 setPet(res);
             });
@@ -33,7 +34,7 @@ const EditPet = () => {
         e.preventDefault();
         const newDescription = e.target.description.value;
 
-        petService.edit(id, newDescription)
+        editPet(id, newDescription)
             .then(res => {
                 setPet(res);
                 navigate('/pets');

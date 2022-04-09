@@ -17,7 +17,7 @@ const LoginForm = () => {
     };
 
     return (
-        <AuthForm type="Register" onSubmitHandler={onLoginClickHandler} />
+        <AuthForm type="Login" onSubmitHandler={onLoginClickHandler} />
     );
 }
 

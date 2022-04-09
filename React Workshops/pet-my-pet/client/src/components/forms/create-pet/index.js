@@ -2,18 +2,19 @@ import "../forms.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import usePetService from "../../../hooks/usePetService";
 import useAuthContext from "../../../hooks/useAuthContext";
 
 import * as formValidator from "../helpers/formValidator";
-import petService from "../../../utils/petService";
 
 import InputError from "../../shared/input-error";
 
 const CreatePet = () => {
     const [errorMessage, setErrorMessage] = useState('');
-    const {username} = useAuthContext();
+    const { username } = useAuthContext();
     const navigate = useNavigate();
-    
+    const { createPet } = usePetService();
+
     const onDescriptionBlurHandler = (e) => {
         const descriptionValue = e.target.value;
 
@@ -27,21 +28,22 @@ const CreatePet = () => {
     const onCreateSubmitHandler = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
-        const description= e.target.description.value;
+        const description = e.target.description.value;
         const imageURL = e.target.imageURL.value;
         const category = e.target.category.value;
         const creator = username;
         const peopleLiked = [];
 
-        const petObject = { name,
-                            description,
-                            imageURL,
-                            category,
-                            likes: 0,
-                            creator,
-                            peopleLiked
+        const petObject = {
+            name,
+            description,
+            imageURL,
+            category,
+            likes: 0,
+            creator,
+            peopleLiked
         };
-        petService.create(petObject);
+        createPet(petObject);
         navigate('/pets');
     };
 
@@ -54,10 +56,10 @@ const CreatePet = () => {
                         <label htmlFor="name">Name</label>
                         <span className="input">
                             <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="Name"
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Name"
                             />
                             <span className="actions"></span>
                         </span>
@@ -66,26 +68,26 @@ const CreatePet = () => {
                         <label htmlFor="description">Description</label>
                         <span className="input">
                             <textarea
-                            rows="4"
-                            cols="45"
-                            type="text"
-                            name="description"
-                            id="description"
-                            placeholder="Description"
-                            onBlur={onDescriptionBlurHandler}
+                                rows="4"
+                                cols="45"
+                                type="text"
+                                name="description"
+                                id="description"
+                                placeholder="Description"
+                                onBlur={onDescriptionBlurHandler}
                             ></textarea>
-                        <span className="actions"></span>
+                            <span className="actions"></span>
                         </span>
-                    <InputError message={errorMessage} />
+                        <InputError message={errorMessage} />
                     </p>
                     <p className="field">
                         <label htmlFor="image">Image</label>
                         <span className="input">
                             <input
-                            type="text"
-                            name="imageURL"
-                            id="image"
-                            placeholder="Image"
+                                type="text"
+                                name="imageURL"
+                                id="image"
+                                placeholder="Image"
                             />
                             <span className="actions"></span>
                         </span>
@@ -104,9 +106,9 @@ const CreatePet = () => {
                         </span>
                     </p>
                     <input
-                    className="button submit"
-                    type="submit"
-                    value="Add Pet"
+                        className="button submit"
+                        type="submit"
+                        value="Add Pet"
                     />
                 </fieldset>
             </form>

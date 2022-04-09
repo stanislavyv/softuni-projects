@@ -1,15 +1,21 @@
-import petService from "../../../utils/petService";
-import Button from "../../shared/button";
-
-import usePet from "../../../hooks/usePet";
+import { useState, useEffect } from "react";
+import usePetService from "../../../hooks/usePetService";
 import useAuthContext from "../../../hooks/useAuthContext";
 
-const PetButton = ({ id, parentCallback, hasAlreadyLiked }) => {
-    const pet = usePet(id);
-    const { username } = useAuthContext();
+import Button from "../../shared/button";
+
+const PetButton = async ({ id, parentCallback, hasAlreadyLiked }) => {
+    const [pet, setPet] = useState({});
+    const { username } = useAuthContext()
+    const { getPetById, likePet } = usePetService();
+
+    useEffect(() => {
+        getPetById(id)
+            .then(setPet);
+    }, [id])
 
     const onPetClickHandler = async () => {
-        const likes = await petService.like(pet, username);
+        const likes = await likePet(pet, username);
 
         parentCallback(likes, !hasAlreadyLiked);
     };

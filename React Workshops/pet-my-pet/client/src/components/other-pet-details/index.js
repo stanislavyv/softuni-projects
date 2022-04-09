@@ -1,16 +1,23 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import usePet from "../../hooks/usePet";
 import useLike from "../../hooks/useLike";
 import useAuthContext from "../../hooks/useAuthContext";
+import usePetService from '../../hooks/usePetService';
 
 import PetButton from "../buttons/pet-button";
 import UnpetButton from "../buttons/unpet-button";
 
 const OtherPetDetails = () => {
+    const [pet, setPet] = useState({});
     const { id } = useParams();
-    const pet = usePet(id);
     const { likes, hasAlreadyLiked, likeCallback } = useLike(id, pet.likes);
     const { isLoggedIn } = useAuthContext();
+    const { getPetById } = usePetService();
+
+    useEffect(() => {
+        getPetById(id)
+            .then(setPet);
+    }, [id])
 
     return (
         <section className="detailsOtherPet">
