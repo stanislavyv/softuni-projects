@@ -24,17 +24,9 @@ import { NotificationCtxProvider } from "./contexts/NotificationContext";
 import AuthRoute from "./hoc/AuthRoute";
 
 //TODO:
-// NOTIFICATIONS
 // ROUTE GUARD FOR EDITING PETS (ONLY CREATOR SHOULD EDIT)
-// SEE route-my-pets -> HAS NOTIFICATIONS?
-// ВИЖ ЗАЩО НЕ СЕ ВИЗУАЛИЗИРАТ ТЪПИТЕ ИЗВЕСТИЯ
-// АКО СЛУЧАЙНО СТАНЕ, ВИЖ КАК ДА ИЗПОЛЗВАШ useNotificationContext
-// В petService -> usePetService? (with state or?)
 // ВИЖ REACT-TOASTIFY КАК СА ГО НАПРАВИЛИ
 // МАНИ ТЪПОТО jsx АТРИБУТ ОТ styles ДА НЕ МРЪНКА!
-// ВИЖ ДАЛИ ИМА НАЧИН ДА ИЗПОЛЗВАШ CONTEXT В SERVICE, БЕЗ ДА ГО ПРАВИШ HOOK
-// TRY NOTIF WITH PLAIN HTML
-// TRY IT IN CODESANDBOX
 
 function App() {
     const authInfo = useUser();

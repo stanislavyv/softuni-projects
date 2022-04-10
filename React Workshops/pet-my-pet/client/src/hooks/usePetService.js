@@ -1,4 +1,4 @@
-import useNotificationContext from "./useNotificationContext";
+import { useNotificationContext } from "../contexts/NotificationContext";
 import * as requester from "../utils/requester";
 
 const usePetService = () => {

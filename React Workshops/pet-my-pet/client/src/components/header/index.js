@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import useAuthContext from '../../hooks/useAuthContext';
+import { useAuthContext } from "../../contexts/AuthContext";
 
 import HeaderAnon from './header-anon';
 import HeaderLogged from './header-logged';

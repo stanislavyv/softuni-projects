@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useLike from "../../hooks/useLike";
-import useAuthContext from "../../hooks/useAuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import usePetService from '../../hooks/usePetService';
 
 import PetButton from "../buttons/pet-button";

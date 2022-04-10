@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import usePetService from "../../../hooks/usePetService";
-import useAuthContext from "../../../hooks/useAuthContext";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 import Button from "../../shared/button";
 
-const PetButton = async ({ id, parentCallback, hasAlreadyLiked }) => {
+const PetButton = ({ id, parentCallback, hasAlreadyLiked }) => {
     const [pet, setPet] = useState({});
     const { username } = useAuthContext()
     const { getPetById, likePet } = usePetService();

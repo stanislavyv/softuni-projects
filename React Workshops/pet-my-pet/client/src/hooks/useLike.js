@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useAuthContext from "./useAuthContext";
+import { useAuthContext } from "../contexts/AuthContext";
 import usePetService from './usePetService';
 
 const useLike = (petId, initialLikes) => {

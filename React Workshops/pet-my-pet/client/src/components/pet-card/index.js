@@ -1,12 +1,12 @@
-const PetCard = ({ props }) => {
+const PetCard = ({ pet }) => {
     return (
         <>
-            <h3>Name: {props.name}</h3>
-            <p>Category: {props.category}</p>
+            <h3>Name: {pet.name}</h3>
+            <p>Category: {pet.category}</p>
             <p className="img">
-                <img src={props.imageURL} alt="pet" />
+                <img src={pet.imageURL} alt="pet" />
             </p>
-            <p className="description">{props.description}</p>
+            <p className="description">{pet.description}</p>
         </>
     );
 };

@@ -1,22 +1,15 @@
-import usePetService from '../../../hooks/usePetService';
-
 import PetCard from "..";
+import DeleteButton from "../../buttons/delete-button";
 import { Link } from "react-router-dom";
 
-const MyPetCard = (props) => {
-    const { deletePet } = usePetService();
-    
-    const deleteCallback = () => {
-        deletePet(props.id);
-    };
+import { toUpperCase } from '../../../utils/misc/toUpperCase';
 
+const MyPetCard = (props) => {
     return (
         <li className="myPet">
-            <PetCard props={props} />
+            <PetCard pet={{ ...props, category: toUpperCase(props.category) }} />
             <div className="pet-info">
-                <a href="" className="button" onClick={deleteCallback}>
-                    Delete
-                </a>
+                <DeleteButton id={props.id} />
                 <Link to={`/pets/edit/${props.id}`} className="button">
                     Edit
                 </Link>

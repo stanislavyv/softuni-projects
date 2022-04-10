@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 
 const NotificationContext = React.createContext({});
 
@@ -48,5 +48,7 @@ export const NotificationCtxProvider = ({ children }) => {
 
     return <NotificationContext.Provider value={value} children={children} />;
 };
+
+export const useNotificationContext = () => useContext(NotificationContext);
 
 export default NotificationContext;

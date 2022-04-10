@@ -3,7 +3,7 @@ import "../forms.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import usePetService from "../../../hooks/usePetService";
-import useAuthContext from "../../../hooks/useAuthContext";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 import * as formValidator from "../helpers/formValidator";
 
@@ -30,7 +30,7 @@ const CreatePet = () => {
         const name = e.target.name.value;
         const description = e.target.description.value;
         const imageURL = e.target.imageURL.value;
-        const category = e.target.category.value;
+        const category = e.target.category.value.toLowerCase();
         const creator = username;
         const peopleLiked = [];
 

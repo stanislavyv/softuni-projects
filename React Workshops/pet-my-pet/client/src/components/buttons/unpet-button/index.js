@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import usePetService from "../../../hooks/usePetService";
-import useAuthContext from "../../../hooks/useAuthContext";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 import Button from "../../shared/button";
 

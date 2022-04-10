@@ -1,21 +1,21 @@
-import useNotificationContext from "../../hooks/useNotificationContext";
+import { useNotificationContext } from "../../contexts/NotificationContext";
 
 import InfoNotification from "./info-notification";
 import ErrorNotification from "./error-notification";
 
 const Notification = () => {
-  const { notification } = useNotificationContext();
+    const { notification } = useNotificationContext();
 
-  return (
-    <div id="notifications">
-      {notification.isActive &&
-        (notification.type === "info" ? (
-          <InfoNotification message={notification.message} />
-        ) : (
-          <ErrorNotification message={notification.message} />
-        ))}
+    return (
+        <div id="notifications">
+            {notification.isActive &&
+                (notification.type === "info" ? (
+                    <InfoNotification message={notification.message} />
+                ) : (
+                    <ErrorNotification message={notification.message} />
+                ))}
 
-      <style jsx>{`
+            <style jsx>{`
         #notifications {
           float: right;
           position: absolute;
@@ -25,8 +25,8 @@ const Notification = () => {
           margin: 1em;
         }
       `}</style>
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Notification;

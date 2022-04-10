@@ -9,7 +9,7 @@ const Button = ({text, onClickHandler}) => {
 
     return (
         <button className="button" onClick={onClickHandler}>
-            <i className="fas fa-heart"></i> {buttonText}
+            {text !== 'Delete' && <i className="fas fa-heart"></i>} {buttonText}
         </button>
     );
 }
