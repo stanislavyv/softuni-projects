@@ -22,6 +22,7 @@ import Footer from "./components/footer";
 import AuthContext from "./contexts/AuthContext";
 import { NotificationCtxProvider } from "./contexts/NotificationContext";
 import AuthRoute from "./hoc/AuthRoute";
+import AuthFormRoute from './hoc/AuthFormRoute';
 
 //TODO:
 // ROUTE GUARD FOR EDITING PETS (ONLY CREATOR SHOULD EDIT)
@@ -50,20 +51,20 @@ function App() {
                             />
                             <Route
                                 path="/pets/create"
-                                element={<AuthRoute children={<CreatePet />}/>}
+                                element={<AuthRoute children={<CreatePet />} />}
                             />
                             <Route
                                 path="/pets/edit/:id"
-                                element={<AuthRoute children={<EditPet />}/>}
+                                element={<AuthRoute children={<EditPet />} />}
                             />
                             <Route
                                 path="/register"
-                                element={<RegisterForm />}
+                                element={<AuthFormRoute children={<RegisterForm />} />}
                             />
-                            <Route path="/login" element={<LoginForm />} />
+                            <Route path="/login" element={<AuthFormRoute children={<LoginForm />} />} />
                             <Route
                                 path="/my-pets"
-                                element={<AuthRoute children={<MyPets {...authInfo}/>}/>}
+                                element={<AuthRoute children={<MyPets {...authInfo} />} />}
                             />
                             <Route
                                 path="/pets/:id"
