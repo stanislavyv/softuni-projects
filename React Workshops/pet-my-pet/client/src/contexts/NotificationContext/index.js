@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useContext } from "react";
 
 const NotificationContext = React.createContext({});
+NotificationContext.displayName = 'NotificationContext';
 
 export const NotificationCtxProvider = ({ children }) => {
     const [notification, setNotification] = useState({

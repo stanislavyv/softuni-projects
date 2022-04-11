@@ -88,26 +88,6 @@
       "peopleLiked": [
         "someguy@abv.bg"
       ]
-    },
-    {
-      "name": "assadsadsaddsa",
-      "description": "asassadasdasd",
-      "imageURL": "",
-      "category": "cat",
-      "likes": 0,
-      "creator": "someguy@abv.bg",
-      "peopleLiked": [],
-      "id": "eBdu9l7"
-    },
-    {
-      "name": "sadasdadsasd",
-      "description": "asdasdadsa",
-      "imageURL": "asdasdasddsa",
-      "category": "cat",
-      "likes": 0,
-      "creator": "someguy@abv.bg",
-      "peopleLiked": [],
-      "id": "6pqC2hH"
     }
   ]
 }

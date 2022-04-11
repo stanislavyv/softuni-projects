@@ -4,18 +4,21 @@ import usePetService from "../../../hooks/usePetService";
 
 import OtherPetCard from "../../pet-card/other-pet-card";
 import MyPetCard from "../../pet-card/my-pet-card";
+import { useNotificationContext } from "../../../contexts/NotificationContext";
 
 const DashboardPetsList = ({ category }) => {
     const [pets, setPets] = useState([]);
     const { username, isLoggedIn } = useAuthContext();
     const { getAllPets } = usePetService();
+    const { notification } = useNotificationContext();
 
+    // use notification.message so useEffect() doesn't get called twice on notification state change
     useEffect(() => {
+        console.log('hi');
         getAllPets(category).then((pets) => {
             setPets(pets);
         });
-    }, [category]);
-
+    }, [category, notification.message]);
     return (
         <ul className="other-pets-list">
             {pets?.map((pet) => {

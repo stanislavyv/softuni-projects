@@ -16,15 +16,15 @@ const Notification = () => {
                 ))}
 
             <style jsx>{`
-        #notifications {
-          float: right;
-          position: absolute;
-          top: 50px;
-          right: 0;
-          text-align: center;
-          margin: 1em;
-        }
-      `}</style>
+                #notifications {
+                float: right;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                text-align: center;
+                margin: 1em;
+                }
+            `}</style>
         </div>
     );
 };

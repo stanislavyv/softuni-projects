@@ -9,35 +9,35 @@ import UnpetButton from "../../buttons/unpet-button";
 
 import { toUpperCase } from "../../../utils/misc/toUpperCase"
 
-const OtherPetCard = (props) => {
+const OtherPetCard = (pet) => {
     const { likes, hasAlreadyLiked, likeCallback } = useLike(
-        props.id,
-        props.likes
+        pet.id,
+        pet.likes
     );
     const { isLoggedIn } = useAuthContext();
     return (
         <li className="otherPet">
-            <PetCard pet={{...props, category: toUpperCase(props.category)}} />
+            <PetCard pet={{ ...pet, category: toUpperCase(pet.category) }} />
             <div className="pet-info">
                 <>
                     {isLoggedIn && (
                         <>
                             {hasAlreadyLiked ? (
                                 <UnpetButton
-                                    id={props.id}
+                                    id={pet.id}
                                     hasAlreadyLiked={hasAlreadyLiked}
                                     parentCallback={likeCallback}
                                 />
                             ) : (
                                 <PetButton
-                                    id={props.id}
+                                    id={pet.id}
                                     hasAlreadyLiked={hasAlreadyLiked}
                                     parentCallback={likeCallback}
                                 />
                             )}
                         </>
                     )}
-                    <Link to={`/pets/${props.id}`}>
+                    <Link to={`/pets/${pet.id}`}>
                         <button className="button">Details</button>
                     </Link>
                     <i className="fas fa-heart"></i> <span>{likes}</span>
