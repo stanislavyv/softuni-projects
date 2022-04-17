@@ -1,6 +1,7 @@
+import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Categories = () => {
+const Categories = React.memo(() => {
     return (
         <nav className="navbar">
             <ul>
@@ -13,6 +14,7 @@ const Categories = () => {
             </ul>
         </nav>
     );
-};
+});
 
+Categories.displayName = 'Categories';
 export default Categories;

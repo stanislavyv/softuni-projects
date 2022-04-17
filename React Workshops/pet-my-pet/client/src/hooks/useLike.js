@@ -1,16 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import usePetService from './usePetService';
 
 const useLike = (petId, initialLikes) => {
     const [likes, setLikes] = useState(initialLikes);
     const [hasAlreadyLiked, setHasAlreadyLiked] = useState(false);
+
     const { username, isLoggedIn } = useAuthContext();
     const { hasUserLikedPet } = usePetService();
-
-    useEffect(() => {
-        setLikes(initialLikes);
-    }, [initialLikes]);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -21,12 +18,18 @@ const useLike = (petId, initialLikes) => {
         }
     }, [petId, username, isLoggedIn]);
 
-    const likeCallback = (newLikes, newHasAlreadyLiked) => {
+    const toggleLike = (newLikes, newHasAlreadyLiked) => {
         setLikes(newLikes);
         setHasAlreadyLiked(newHasAlreadyLiked);
     };
 
-    return { likes, hasAlreadyLiked, likeCallback };
+    const value = useMemo(() => ({
+        likes,
+        hasAlreadyLiked,
+        toggleLike
+    }), [likes]);
+
+    return value;
 }
 
 export default useLike;

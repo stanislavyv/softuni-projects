@@ -10,7 +10,7 @@ import UnpetButton from "../buttons/unpet-button";
 const OtherPetDetails = () => {
     const [pet, setPet] = useState({});
     const { id } = useParams();
-    const { likes, hasAlreadyLiked, likeCallback } = useLike(id, pet.likes);
+    const { likes, hasAlreadyLiked, togggleLike } = useLike(id, pet.likes);
     const { isLoggedIn } = useAuthContext();
     const { getPetById } = usePetService();
 
@@ -30,13 +30,13 @@ const OtherPetDetails = () => {
                             <UnpetButton
                                 id={id}
                                 hasAlreadyLiked={hasAlreadyLiked}
-                                parentCallback={likeCallback}
+                                parentCallback={togggleLike}
                             />
                         ) : (
                             <PetButton
                                 id={id}
                                 hasAlreadyLiked={hasAlreadyLiked}
-                                parentCallback={likeCallback}
+                                parentCallback={togggleLike}
                             />
                         )}
                     </>

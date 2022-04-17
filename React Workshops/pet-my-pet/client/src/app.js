@@ -9,7 +9,6 @@ import useUser from "./hooks/useUser";
 import CustomErrorBoundary from "./components/custom-error-boundary";
 import Header from "./components/header";
 import Dashboard from "./components/dashboard";
-import PetDetails from "./components/other-pet-details";
 import CreatePet from "./components/forms/create-pet";
 import EditPet from "./components/forms/edit-pet";
 import RegisterForm from "./components/forms/auth/register";
@@ -41,13 +40,14 @@ function App() {
                     <NotificationCtxProvider>
                         <Routes>
                             <Route path="/pets" element={<Dashboard />} />
+
                             <Route
                                 path="/pets/categories/:category"
                                 element={<Dashboard />}
                             />
                             <Route
-                                path="/pets/details/:id"
-                                element={<PetDetails />}
+                                path="/pets/:id"
+                                element={<OtherPetDetails />}
                             />
                             <Route
                                 path="/pets/create"
@@ -65,10 +65,6 @@ function App() {
                             <Route
                                 path="/my-pets"
                                 element={<AuthRoute children={<MyPets {...authInfo} />} />}
-                            />
-                            <Route
-                                path="/pets/:id"
-                                element={<OtherPetDetails />}
                             />
 
                             <Route path="*" element={<Navigate to="/pets" />} />

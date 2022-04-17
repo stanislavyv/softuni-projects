@@ -1,10 +1,17 @@
+import React from "react";
+
 import { useEffect, useState } from "react";
 import usePetService from "../../../hooks/usePetService";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
 import Button from "../../shared/button";
 
-const UnpetButton = ({ id, parentCallback, hasAlreadyLiked }) => {
+const arePropsEqual = (prev, curr) => {
+    return prev.id === curr.id &&
+           prev.hasAlreadyLiked === curr.hasAlreadyLiked;
+};
+
+const UnpetButton = React.memo(({ id, parentCallback, hasAlreadyLiked }) => {
     const [pet, setPet] = useState({});
     const { username } = useAuthContext()
     const { getPetById, unpet } = usePetService();
@@ -21,6 +28,7 @@ const UnpetButton = ({ id, parentCallback, hasAlreadyLiked }) => {
     };
 
     return <Button text="Unpet" onClickHandler={onUnpetClickHandler} />;
-};
+}, arePropsEqual);
 
+UnpetButton.displayName = 'UnpetButton';
 export default UnpetButton;

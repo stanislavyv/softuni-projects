@@ -1,3 +1,5 @@
+import React from "react";
+
 import useLike from "../../../hooks/useLike";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
@@ -7,10 +9,11 @@ import PetCard from "..";
 import PetButton from "../../buttons/pet-button";
 import UnpetButton from "../../buttons/unpet-button";
 
-import { toUpperCase } from "../../../utils/misc/toUpperCase"
+import toUpperCase from "../../../utils/misc/toUpperCase"
+import arePetsEqual from "../../../utils/misc/arePetsEqual";
 
-const OtherPetCard = (pet) => {
-    const { likes, hasAlreadyLiked, likeCallback } = useLike(
+const OtherPetCard = React.memo((pet) => {
+    const { likes, hasAlreadyLiked, togggleLike } = useLike(
         pet.id,
         pet.likes
     );
@@ -26,13 +29,13 @@ const OtherPetCard = (pet) => {
                                 <UnpetButton
                                     id={pet.id}
                                     hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={likeCallback}
+                                    parentCallback={togggleLike}
                                 />
                             ) : (
                                 <PetButton
                                     id={pet.id}
                                     hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={likeCallback}
+                                    parentCallback={togggleLike}
                                 />
                             )}
                         </>
@@ -45,6 +48,7 @@ const OtherPetCard = (pet) => {
             </div>
         </li>
     );
-};
+}, arePetsEqual);
 
+OtherPetCard.displayName = 'OtherPetCard';
 export default OtherPetCard;
