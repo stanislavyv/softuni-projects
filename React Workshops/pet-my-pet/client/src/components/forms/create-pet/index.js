@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import usePetService from "../../../hooks/usePetService";
 import { useAuthContext } from "../../../contexts/AuthContext";
@@ -12,24 +12,52 @@ import Fieldset from "../../shared/form/fieldset";
 import FormLegend from "../../shared/form/form-legend";
 import Field from "../../shared/form/field";
 
+const errorReducer = (state, { type, payload }) => {
+    switch (type) {
+        case "name":
+            return { ...state, name: payload };
+        case "description":
+            return { ...state, description: payload };
+        default:
+            return state;
+    }
+}
+
 const CreatePet = () => {
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errors, dispatch] = useReducer(errorReducer, {
+        name: '',
+        description: ''
+    });
     const { username } = useAuthContext();
     const navigate = useNavigate();
     const { createPet } = usePetService();
 
+    const onNameBlurHandler = (e) => {
+        const nameValue = e.target.value;
+        const type = 'name';
+
+        if (!formValidator.isPetNameValid(nameValue)) {
+            dispatch({ type, payload: 'Name is too short!' });
+        } else {
+            dispatch({ type, payload: '' });
+        }
+    };
+
     const onDescriptionBlurHandler = (e) => {
         const descriptionValue = e.target.value;
+        const type = 'description';
 
         if (!formValidator.isDescriptionValid(descriptionValue)) {
-            setErrorMessage('Description is too short!');
+            dispatch({ type, payload: 'Description is too short!' });
         } else {
-            setErrorMessage('');
+            dispatch({ type, payload: '' });
         }
     };
 
     const onCreateSubmitHandler = (e) => {
         e.preventDefault();
+
+        if (errors.name || errors.description) { return; }
 
         const petObject = {
             name: e.target.name.value,
@@ -54,8 +82,10 @@ const CreatePet = () => {
                         name="name"
                         id="name"
                         placeholder="Name"
+                        onBlur={onNameBlurHandler}
                     />
                 </Field>
+                <InputError message={errors.name} />
 
                 <Field type='description'>
                     <textarea
@@ -69,7 +99,8 @@ const CreatePet = () => {
                         onBlur={onDescriptionBlurHandler}
                     ></textarea>
                 </Field>
-                <InputError message={errorMessage} />
+                <InputError message={errors.description} />
+
                 <Field type='image'>
                     <input
                         type="text"
