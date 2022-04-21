@@ -27,7 +27,7 @@ const useLike = (petId, initialLikes) => {
         likes,
         hasAlreadyLiked,
         toggleLike
-    }), [likes]);
+    }), [hasAlreadyLiked]);
 
     return value;
 }
