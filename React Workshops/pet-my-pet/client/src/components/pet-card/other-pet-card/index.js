@@ -1,52 +1,37 @@
 import React from "react";
 
 import useLike from "../../../hooks/useLike";
-import { useAuthContext } from "../../../contexts/AuthContext";
-
-import { Link } from "react-router-dom";
 
 import PetCard from "..";
-import PetButton from "../../buttons/pet-button";
-import UnpetButton from "../../buttons/unpet-button";
+import PetCardWrapper from "../pet-card-wrapper";
+import OtherPetLoggedButton from "../../buttons/other-pet-logged-button"
+import DetailsButton from "../../buttons/details-button";
 
 import toUpperCase from "../../../utils/misc/toUpperCase"
 import arePetsEqual from "../../../utils/misc/arePetsEqual";
+import PetInfo from "../pet-info";
 
 const OtherPetCard = React.memo((pet) => {
-    const { likes, hasAlreadyLiked, togggleLike } = useLike(
+    const { likes, hasAlreadyLiked, toggleLike } = useLike(
         pet.id,
         pet.likes
     );
-    const { isLoggedIn } = useAuthContext();
+
     return (
-        <li className="otherPet">
+        <PetCardWrapper as='li'>
             <PetCard pet={{ ...pet, category: toUpperCase(pet.category) }} />
-            <div className="pet-info">
+            <PetInfo>
                 <>
-                    {isLoggedIn && (
-                        <>
-                            {hasAlreadyLiked ? (
-                                <UnpetButton
-                                    id={pet.id}
-                                    hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={togggleLike}
-                                />
-                            ) : (
-                                <PetButton
-                                    id={pet.id}
-                                    hasAlreadyLiked={hasAlreadyLiked}
-                                    parentCallback={togggleLike}
-                                />
-                            )}
-                        </>
-                    )}
-                    <Link to={`/pets/${pet.id}`}>
-                        <button className="button">Details</button>
-                    </Link>
+                    <OtherPetLoggedButton
+                        id={pet.id}
+                        hasAlreadyLiked={hasAlreadyLiked}
+                        toggleLike={toggleLike}
+                    />
+                    <DetailsButton id={pet.id} />
                     <i className="fas fa-heart"></i> <span>{likes}</span>
                 </>
-            </div>
-        </li>
+            </PetInfo>
+        </PetCardWrapper>
     );
 }, arePetsEqual);
 

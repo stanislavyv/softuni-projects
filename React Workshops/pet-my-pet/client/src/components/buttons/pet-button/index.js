@@ -6,7 +6,7 @@ import Button from "../../shared/button";
 
 const arePropsEqual = (prev, curr) => {
     return prev.id === curr.id &&
-           prev.hasAlreadyLiked === curr.hasAlreadyLiked;
+        prev.hasAlreadyLiked === curr.hasAlreadyLiked;
 };
 
 const PetButton = React.memo(({ id, parentCallback, hasAlreadyLiked }) => {
@@ -25,7 +25,11 @@ const PetButton = React.memo(({ id, parentCallback, hasAlreadyLiked }) => {
         parentCallback(likes, !hasAlreadyLiked);
     };
 
-    return <Button text="Pet" onClickHandler={onPetClickHandler} />;
+    return (
+        <Button onClickHandler={onPetClickHandler}>
+            <i className="fas fa-heart"></i> Pet
+        </Button>
+    );
 }, arePropsEqual);
 
 PetButton.displayName = 'PetButton';

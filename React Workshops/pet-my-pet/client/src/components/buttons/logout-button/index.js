@@ -1,17 +1,20 @@
 import authService from "../../../utils/authService";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "../../shared/button";
 
 const LogoutButton = () => {
+    const navigate = useNavigate();
+    
     const onLogoutClickHandler = () => {
         authService.logout();
+        navigate('/pets');
     }
     
     return (
-        <Link to="/pets" onClick={onLogoutClickHandler}>
-            <i className="fas fa-sign-out-alt"></i>
-            Logout
-        </Link>
+        <Button onClickHandler={onLogoutClickHandler}>
+            <i className="fas fa-sign-out-alt"></i> Logout
+        </Button>
     );
 }
 

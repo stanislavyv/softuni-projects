@@ -101,10 +101,3 @@ form textarea:focus {
     outline: none;
     border-color: #090;
 }
-
-.description {
-    width: 17rem;
-    height: 10vh;
-    padding: 2rem;
-    overflow: auto;
-}

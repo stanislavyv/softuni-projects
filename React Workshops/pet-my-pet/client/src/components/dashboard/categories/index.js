@@ -1,18 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+
+import styled from 'styled-components';
+
+import StyledLink from '../../shared/link';
+import CategoriesList from './categories-list';
+
+const StyledCategories = styled.nav`
+    display: flex;
+    justify-content: center;
+    margin: 10px 10px 20px 10px;
+`;
 
 const Categories = React.memo(() => {
+    const links = [
+        { name: "All", path: "/pets" },
+        { name: "Cats", path: "/pets/categories/cat" },
+        { name: "Dogs", path: "/pets/categories/dog" },
+        { name: "Parrots", path: "/pets/categories/parrot" },
+        { name: "Reptiles", path: "/pets/categories/reptile" },
+        { name: "Other", path: "/pets/categories/other" },
+    ];
+
     return (
-        <nav className="navbar">
-            <ul>
-                <li><Link to="/pets" >All</Link></li>
-                <li><Link to="/pets/categories/cat" >Cats</Link></li>
-                <li><Link to="/pets/categories/dog" >Dogs</Link></li>
-                <li><Link to="/pets/categories/parrot" >Parrots</Link></li>
-                <li><Link to="/pets/categories/reptile" >Reptiles</Link></li>
-                <li><Link to="/pets/categories/other" >Other</Link></li>
-            </ul>
-        </nav>
+        <StyledCategories>
+            <CategoriesList>
+                {links.map((link, index) => {
+                    return <li><StyledLink key={index} to={link.path}>{link.name}</StyledLink></li>;
+                })}
+            </CategoriesList>
+        </StyledCategories>
     );
 });
 

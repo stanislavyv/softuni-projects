@@ -1,23 +1,23 @@
 import React from "react";
 
 import PetCard from "..";
+import PetCardWrapper from "../pet-card-wrapper";
 import DeleteButton from "../../buttons/delete-button";
-import { Link } from "react-router-dom";
+import EditButton from "../../buttons/edit-button";
 
 import toUpperCase from '../../../utils/misc/toUpperCase';
 import arePetsEqual from "../../../utils/misc/arePetsEqual";
+import PetInfo from "../pet-info";
 
 const MyPetCard = React.memo((pet) => {
     return (
-        <li className="myPet">
+        <PetCardWrapper as='li'>
             <PetCard pet={{ ...pet, category: toUpperCase(pet.category) }} />
-            <div className="pet-info">
+            <PetInfo>
                 <DeleteButton id={pet.id} />
-                <Link to={`/pets/edit/${pet.id}`} className="button">
-                    Edit
-                </Link>
-            </div>
-        </li>
+                <EditButton id={pet.id} />
+            </PetInfo>
+        </PetCardWrapper>
     );
 }, arePetsEqual);
 

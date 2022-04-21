@@ -1,16 +1,28 @@
-import { useEffect, useState } from "react";
+import styled from "styled-components";
 
-const Button = ({text, onClickHandler}) => {
-    const [buttonText, setButtonText] = useState(text);
-    
-    useEffect(() => {
-        setButtonText(text);
-    }, [text]);
+const StyledButton = styled.button`
+    display: block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    background: cadetblue;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 16px;
 
+    &:hover {
+        background: rgb(248, 215, 107);
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+    }
+`;
+
+const Button = ({ children, onClickHandler, type }) => {
     return (
-        <button className="button" onClick={onClickHandler}>
-            {text !== 'Delete' && <i className="fas fa-heart"></i>} {buttonText}
-        </button>
+        <StyledButton onClick={onClickHandler} type={type}>
+            {children}
+        </StyledButton>
     );
 }
 

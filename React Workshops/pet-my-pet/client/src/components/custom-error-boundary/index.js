@@ -1,4 +1,11 @@
 import { Component } from "react";
+import styled from "styled-components";
+
+const StyledErrorBoundary = styled.section`
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+`;
 
 export default class CustomErrorBoundary extends Component {
     constructor(props) {
@@ -21,10 +28,10 @@ export default class CustomErrorBoundary extends Component {
     render() {
         if (this.state.hasError) {
             return (
-                <section className="custom-error">
+                <StyledErrorBoundary>
                     <h2>Error!</h2>
                     <p>There was a problem with your request, please try again later.</p>
-                </section>
+                </StyledErrorBoundary>
             );
         }
 

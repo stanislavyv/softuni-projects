@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import usePetService from '../../../hooks/usePetService';
 
+import PetsList from '../../pets-list';
 import MyPetCard from '../../pet-card/my-pet-card';
 
 const MyPetsList = ({ username }) => {
@@ -18,11 +19,11 @@ const MyPetsList = ({ username }) => {
     return (
         <>
             {pets.length > 0 ?
-                (<ul className="my-pets-list">
+                (<PetsList>
                     {pets.map(p => {
                         return <MyPetCard key={p.id} {...p} />
                     })}
-                </ul>) :
+                </PetsList>) :
                 (<div>You haven't added pets yet!</div>)}
         </>
     );

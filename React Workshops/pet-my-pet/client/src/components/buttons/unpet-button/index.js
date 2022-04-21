@@ -27,7 +27,11 @@ const UnpetButton = React.memo(({ id, parentCallback, hasAlreadyLiked }) => {
         parentCallback(likes, !hasAlreadyLiked);
     };
 
-    return <Button text="Unpet" onClickHandler={onUnpetClickHandler} />;
+    return (
+        <Button onClickHandler={onUnpetClickHandler}>
+            <i className="fas fa-heart"></i> Unpet
+        </Button>
+    );
 }, arePropsEqual);
 
 UnpetButton.displayName = 'UnpetButton';

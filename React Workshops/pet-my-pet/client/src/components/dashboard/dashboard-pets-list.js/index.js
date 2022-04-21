@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import usePetService from "../../../hooks/usePetService";
+import { useNotificationContext } from "../../../contexts/NotificationContext";
 
+import PetsList from "../../pets-list";
 import OtherPetCard from "../../pet-card/other-pet-card";
 import MyPetCard from "../../pet-card/my-pet-card";
-import { useNotificationContext } from "../../../contexts/NotificationContext";
 
 const DashboardPetsList = ({ category }) => {
     const [pets, setPets] = useState([]);
@@ -19,7 +20,7 @@ const DashboardPetsList = ({ category }) => {
         });
     }, [category, notification.message]);
     return (
-        <ul className="other-pets-list">
+        <PetsList>
             {pets?.map((pet) => {
                 if (isLoggedIn) {
                     return pet.creator.toLowerCase() === username.toLowerCase() ? (
@@ -31,7 +32,7 @@ const DashboardPetsList = ({ category }) => {
                 
                 return <OtherPetCard key={pet.id} {...pet} />;
             })}
-        </ul>
+        </PetsList>
     );
 };
 

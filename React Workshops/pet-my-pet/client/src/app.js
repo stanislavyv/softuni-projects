@@ -1,7 +1,7 @@
 import React from 'react';
 
-import "./app.css";
 import "./utils/firebase";
+import GlobalStyles from './GlobalStyles';
 import { Route, Routes, Navigate } from "react-router-dom";
 
 import useUser from "./hooks/useUser";
@@ -10,11 +10,11 @@ import CustomErrorBoundary from "./components/custom-error-boundary";
 import Header from "./components/header";
 import Dashboard from "./components/dashboard";
 import CreatePet from "./components/forms/create-pet";
-import EditPet from "./components/forms/edit-pet";
+import EditPet from './components/pet-details/edit-pet';
 import RegisterForm from "./components/forms/auth/register";
 import LoginForm from "./components/forms/auth/login";
 import MyPets from "./components/my-pets";
-import OtherPetDetails from "./components/other-pet-details";
+import OtherPetDetails from './components/pet-details/other-pet-details';
 import Notification from "./components/notification";
 import Footer from "./components/footer";
 
@@ -25,14 +25,22 @@ import AuthFormRoute from './hoc/AuthFormRoute';
 
 //TODO:
 // ROUTE GUARD FOR EDITING PETS (ONLY CREATOR SHOULD EDIT)
-// ВИЖ REACT-TOASTIFY КАК СА ГО НАПРАВИЛИ
-// МАНИ ТЪПОТО jsx АТРИБУТ ОТ styles ДА НЕ МРЪНКА!
+// Оправи CreatePet и EditPet
+// Довърши формите css
+// Оправи Unpet функционалност
+
+// TO COMMIT:
+// Refactor CSS
+// Migrate to styled-components
+// Split Html to smaller components for reusability
+// Make pet cards prettier
 
 function App() {
     const authInfo = useUser();
 
     return (
-        <div>
+        <>
+            <GlobalStyles />
             <AuthContext.Provider value={authInfo}>
                 <Header />
 
@@ -76,7 +84,7 @@ function App() {
 
                 <Footer />
             </AuthContext.Provider>
-        </div>
+        </>
     );
 }
 

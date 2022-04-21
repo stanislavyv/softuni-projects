@@ -9,7 +9,7 @@ const DeleteButton = ({ id }) => {
         deletePet(id);
     };
     
-    return <Button text="Delete" onClickHandler={deleteCallback} />;
+    return <Button onClickHandler={deleteCallback}>Delete</Button>;
 }
 
 export default DeleteButton;

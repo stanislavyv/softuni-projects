@@ -1,13 +1,16 @@
-import "../forms.css";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import usePetService from "../../../hooks/usePetService";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
-import * as formValidator from "../helpers/formValidator";
+import * as formValidator from "../../../utils/formValidator";
 
 import InputError from "../../shared/input-error";
+import Button from "../../shared/button";
+import Form from "../../shared/form";
+import Fieldset from "../../shared/form/fieldset";
+import FormLegend from "../../shared/form/form-legend";
+import Field from "../../shared/form/field";
 
 const CreatePet = () => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -27,92 +30,69 @@ const CreatePet = () => {
 
     const onCreateSubmitHandler = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
-        const description = e.target.description.value;
-        const imageURL = e.target.imageURL.value;
-        const category = e.target.category.value.toLowerCase();
-        const creator = username;
-        const peopleLiked = [];
 
         const petObject = {
-            name,
-            description,
-            imageURL,
-            category,
+            name: e.target.name.value,
+            description: e.target.description.value,
+            imageURL: e.target.imageURL.value,
+            category: e.target.category.value.toLowerCase(),
             likes: 0,
-            creator,
-            peopleLiked
+            creator: username,
+            peopleLiked: []
         };
         createPet(petObject);
         navigate('/pets');
     };
 
     return (
-        <section className="create">
-            <form onSubmit={onCreateSubmitHandler}>
-                <fieldset>
-                    <legend>Add new Pet</legend>
-                    <p className="field">
-                        <label htmlFor="name">Name</label>
-                        <span className="input">
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                placeholder="Name"
-                            />
-                            <span className="actions"></span>
-                        </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="description">Description</label>
-                        <span className="input">
-                            <textarea
-                                rows="4"
-                                cols="45"
-                                type="text"
-                                name="description"
-                                id="description"
-                                placeholder="Description"
-                                onBlur={onDescriptionBlurHandler}
-                            ></textarea>
-                            <span className="actions"></span>
-                        </span>
-                        <InputError message={errorMessage} />
-                    </p>
-                    <p className="field">
-                        <label htmlFor="image">Image</label>
-                        <span className="input">
-                            <input
-                                type="text"
-                                name="imageURL"
-                                id="image"
-                                placeholder="Image"
-                            />
-                            <span className="actions"></span>
-                        </span>
-                    </p>
-                    <p className="field">
-                        <label htmlFor="category">Category</label>
-                        <span className="input">
-                            <select type="text" name="category">
-                                <option>Cat</option>
-                                <option>Dog</option>
-                                <option>Parrot</option>
-                                <option>Reptile</option>
-                                <option>Other</option>
-                            </select>
-                            <span className="actions"></span>
-                        </span>
-                    </p>
+        <Form onSubmitHandler={onCreateSubmitHandler}>
+            <Fieldset>
+                <FormLegend>Add new Pet</FormLegend>
+                <Field type='name'>
                     <input
-                        className="button submit"
-                        type="submit"
-                        value="Add Pet"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Name"
                     />
-                </fieldset>
-            </form>
-        </section>
+                </Field>
+
+                <Field type='description'>
+                    <textarea
+                        rows="4"
+                        cols="45"
+                        type="text"
+                        name="description"
+                        id="description"
+                        resize="none"
+                        placeholder="Description"
+                        onBlur={onDescriptionBlurHandler}
+                    ></textarea>
+                </Field>
+                <InputError message={errorMessage} />
+                <Field type='image'>
+                    <input
+                        type="text"
+                        name="imageURL"
+                        id="image"
+                        placeholder="Image"
+                    />
+                </Field>
+                <Field type='category'>
+                    <select type="text" name="category">
+                        <option>Cat</option>
+                        <option>Dog</option>
+                        <option>Parrot</option>
+                        <option>Reptile</option>
+                        <option>Other</option>
+                    </select>
+                </Field>
+
+                <Button type='submit'>
+                    Add Pet
+                </Button>
+            </Fieldset>
+        </Form>
     );
 }
 
