@@ -4,8 +4,6 @@ import "./utils/firebase";
 import GlobalStyles from './GlobalStyles';
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import useUser from "./hooks/useUser";
-
 import CustomErrorBoundary from "./components/custom-error-boundary";
 import Header from "./components/header";
 import Dashboard from "./components/dashboard";
@@ -18,34 +16,31 @@ import OtherPetDetails from './components/pet-details/other-pet-details';
 import Notification from "./components/notification";
 import Footer from "./components/footer";
 
-import AuthContext from "./contexts/AuthContext";
-import { NotificationCtxProvider } from "./contexts/NotificationContext";
+import AuthProvider from './contexts/AuthContext';
+import NotificationProvider from "./contexts/NotificationContext";
+
 import AuthRoute from "./hoc/AuthRoute";
 import AuthFormRoute from './hoc/AuthFormRoute';
+import Loading from './components/loading';
 
-//TODO:
-// ROUTE GUARD FOR EDITING PETS (ONLY CREATOR SHOULD EDIT)
-// Оправи CreatePet и EditPet
-// Довърши формите css
-// Оправи Unpet функционалност
-
-// TO COMMIT:
-// Refactor CSS
-// Migrate to styled-components
-// Split Html to smaller components for reusability
-// Make pet cards prettier
-
+//TODO: 
+// THINK OF A WAY TO USE AUTH CONTEXT IN APP COMP
+// SEE useSignInWithEmailAndPassword FOR ERROR HANDLING ON 
+//     ATTEMPTED LOGIN WITH INVALID CREDENTIALNS
+// !!!!!!!!! EXECUTE THE HOOK FN ONCE IN THE HOOK FILE AND EXPORT ITS VALUE!!!!!!!!!
+// TEST IF YOU CAN REPLACE CONTEXT WITH GLOBAL HOOK
+// See how to make auth guard without HOC
 function App() {
-    const authInfo = useUser();
 
     return (
         <>
             <GlobalStyles />
-            <AuthContext.Provider value={authInfo}>
-                <Header />
+            <NotificationProvider>
+                <AuthProvider>
+                    <Loading loading={true} />
+                    <Header />
 
-                <CustomErrorBoundary>
-                    <NotificationCtxProvider>
+                    <CustomErrorBoundary>
                         <Routes>
                             <Route path="/pets" element={<Dashboard />} />
 
@@ -72,18 +67,19 @@ function App() {
                             <Route path="/login" element={<AuthFormRoute children={<LoginForm />} />} />
                             <Route
                                 path="/my-pets"
-                                element={<AuthRoute children={<MyPets {...authInfo} />} />}
+                                element={<AuthRoute children={<MyPets />} />}
                             />
 
                             <Route path="*" element={<Navigate to="/pets" />} />
                         </Routes>
 
                         <Notification />
-                    </NotificationCtxProvider>
-                </CustomErrorBoundary>
+                    </CustomErrorBoundary>
+                </AuthProvider>
+            </NotificationProvider>
 
-                <Footer />
-            </AuthContext.Provider>
+            <Footer />
+
         </>
     );
 }

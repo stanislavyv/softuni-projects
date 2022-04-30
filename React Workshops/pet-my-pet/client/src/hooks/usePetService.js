@@ -1,8 +1,8 @@
-import { useNotificationContext } from "../contexts/NotificationContext";
+import { useNotification } from "../contexts/NotificationContext";
 import * as requester from "../utils/requester";
 
 const usePetService = () => {
-    const { notifyError, notifyInfo } = useNotificationContext();
+    const { notifyError, notifyInfo } = useNotification();
 
     const getAllPets = function (category) {
         const queryString = category ? `?category=${category}` : "";

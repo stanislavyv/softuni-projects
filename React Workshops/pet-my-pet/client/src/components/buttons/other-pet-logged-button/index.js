@@ -1,10 +1,10 @@
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 
 import PetButton from "../../buttons/pet-button";
 import UnpetButton from "../../buttons/unpet-button";
 
 const OtherPetLoggedButton = ({ hasAlreadyLiked, id, toggleLike }) => {
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn } = useAuth();
 
     return (
         <>

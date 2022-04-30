@@ -1,13 +1,14 @@
-import authService from "../../../utils/authService";
+import { useAuth } from "../../../contexts/AuthContext";
 
 import { useNavigate } from "react-router-dom";
 import Button from "../../shared/button";
 
 const LogoutButton = () => {
+    const { logout } = useAuth();
     const navigate = useNavigate();
     
     const onLogoutClickHandler = () => {
-        authService.logout();
+        logout();
         navigate('/pets');
     }
     

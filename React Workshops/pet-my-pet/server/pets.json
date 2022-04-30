@@ -81,9 +81,11 @@
       "description": "This is my cat Lilly. She is 2 years old and is lazy",
       "imageURL": "https://justsomething.co/wp-content/uploads/2018/07/this-is-lilly-the-cat-with-weird-eyebrows-who-looks-like-she-s-always-judging-you-04.jpg",
       "category": "cat",
-      "likes": "74",
+      "likes": "75",
       "creator": "SomeGuy@abv.bg",
-      "peopleLiked": []
+      "peopleLiked": [
+        "syv31@abv.bg"
+      ]
     },
     {
       "id": "5bb08c47e541f21900d8a7a1",

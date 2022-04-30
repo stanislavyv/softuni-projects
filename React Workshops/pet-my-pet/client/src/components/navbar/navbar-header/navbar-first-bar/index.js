@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { useAuthContext } from "../../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 import { Link } from "react-router-dom";
 import StyledLink from "../../../shared/link";
@@ -15,7 +15,7 @@ const StyledNavbarFirstBar = styled.div`
 `;
 
 const NavbarFirstBar = () => {
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn } = useAuth();
     
     return (
         <StyledNavbarFirstBar>

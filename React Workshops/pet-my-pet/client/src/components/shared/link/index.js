@@ -18,7 +18,7 @@ const Styled = styled(Link)`
     }
 `;
 
-const StyledLink = ({ to, children, className }) => {
+const StyledLink = ({ to, children, className, keyProp }) => {
     return <Styled to={to} className={className}>{children}</Styled>;
 };
 

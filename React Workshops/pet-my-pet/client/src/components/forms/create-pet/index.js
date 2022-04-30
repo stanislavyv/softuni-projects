@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import usePetService from "../../../hooks/usePetService";
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 
 import * as formValidator from "../../../utils/formValidator";
 
@@ -28,7 +28,7 @@ const CreatePet = () => {
         name: '',
         description: ''
     });
-    const { username } = useAuthContext();
+    const { username } = useAuth();
     const navigate = useNavigate();
     const { createPet } = usePetService();
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import usePetService from "../../../hooks/usePetService";
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 
 import Button from "../../shared/button";
 
@@ -11,7 +11,7 @@ const arePropsEqual = (prev, curr) => {
 
 const PetButton = React.memo(({ id, parentCallback, hasAlreadyLiked }) => {
     const [pet, setPet] = useState({});
-    const { username } = useAuthContext()
+    const { username } = useAuth()
     const { getPetById, likePet } = usePetService();
 
     useEffect(() => {

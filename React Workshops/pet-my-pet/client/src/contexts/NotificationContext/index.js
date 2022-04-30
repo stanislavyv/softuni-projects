@@ -3,11 +3,11 @@ import React, { useState, useEffect, useMemo, useContext } from "react";
 const NotificationContext = React.createContext({});
 NotificationContext.displayName = 'NotificationContext';
 
-export const NotificationCtxProvider = ({ children }) => {
+const NotificationProvider = ({ children }) => {
     const [notification, setNotification] = useState({
+        type: "",
         message: "",
         isActive: false,
-        type: ""
     });
 
     useEffect(() => {
@@ -50,6 +50,6 @@ export const NotificationCtxProvider = ({ children }) => {
     return <NotificationContext.Provider value={value} children={children} />;
 };
 
-export const useNotificationContext = () => useContext(NotificationContext);
+export const useNotification = () => useContext(NotificationContext);
 
-export default NotificationContext;
+export default NotificationProvider;

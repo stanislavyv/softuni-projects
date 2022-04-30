@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 import AuthForm from "..";
-import authService from "../../../../utils/authService";
 
 const LoginForm = () => {
     const [isValid, setIsValid] = useState(false);
     const navigate = useNavigate();
+    const { signIn } = useAuth();
 
     const onLoginClickHandler = (e) => {
         e.preventDefault();
@@ -16,8 +17,12 @@ const LoginForm = () => {
         const username = e.target.username.value;
         const password = e.target.password.value;
 
-        authService.signIn(username, password)
-            .then(navigate('/'));
+        signIn(username, password)
+            .then((res) => {
+                if (res) {
+                    navigate('/');
+                }
+            })
     };
 
     return (

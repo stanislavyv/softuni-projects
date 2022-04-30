@@ -25,7 +25,7 @@ const Categories = React.memo(() => {
         <StyledCategories>
             <CategoriesList>
                 {links.map((link, index) => {
-                    return <li><StyledLink key={index} to={link.path}>{link.name}</StyledLink></li>;
+                    return <li key={index}><StyledLink to={link.path}>{link.name}</StyledLink></li>;
                 })}
             </CategoriesList>
         </StyledCategories>

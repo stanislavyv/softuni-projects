@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { useNotificationContext } from "../../contexts/NotificationContext";
+import { useNotification } from "../../contexts/NotificationContext";
 
 import InfoNotification from "./info-notification";
 import ErrorNotification from "./error-notification";
@@ -28,7 +28,7 @@ const StyledNotifications = styled.div`
 `;
 
 const Notification = () => {
-    const { notification } = useNotificationContext();
+    const { notification } = useNotification();
 
     return (
         <StyledNotifications>

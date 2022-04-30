@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 import usePetService from "../../../hooks/usePetService";
-import { useNotificationContext } from "../../../contexts/NotificationContext";
+import { useNotification } from "../../../contexts/NotificationContext";
 
 import PetsList from "../../pets-list";
 import OtherPetCard from "../../pet-card/other-pet-card";
@@ -9,9 +9,9 @@ import MyPetCard from "../../pet-card/my-pet-card";
 
 const DashboardPetsList = ({ category }) => {
     const [pets, setPets] = useState([]);
-    const { username, isLoggedIn } = useAuthContext();
+    const { username, isLoggedIn } = useAuth();
     const { getAllPets } = usePetService();
-    const { notification } = useNotificationContext();
+    const { notification } = useNotification();
 
     // use notification.message so useEffect() doesn't get called twice on notification state change
     useEffect(() => {

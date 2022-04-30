@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { useAuthContext } from "../../../../contexts/AuthContext";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 import NavbarSecondBarLogged from "./navbar-second-bar-logged";
 import NavbarSecondBarAnon from "./navbar-second-bar-anon";
@@ -11,7 +11,7 @@ const StyledNavbarSecondBar = styled.div`
 `;
 
 const NavbarSecondBar = () => {
-    const { isLoggedIn, username } = useAuthContext();
+    const { isLoggedIn, username } = useAuth();
 
     return (
         <StyledNavbarSecondBar>

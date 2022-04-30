@@ -20,9 +20,10 @@ const authService = () => {
     };
 
     const signIn = (username, password) => {
-        return signInWithEmailAndPassword(auth, username, password).catch(
-            console.log
-        );
+        return signInWithEmailAndPassword(auth, username, password)
+            .catch(
+                console.log
+            );
     };
 
     const logout = () => {
@@ -30,6 +31,7 @@ const authService = () => {
     };
 
     return {
+        auth,
         onStateChange,
         createUser,
         signIn,

@@ -1,12 +1,14 @@
+import { useAuth } from "../../contexts/AuthContext";
+
 import MyPetsList from "./my-pets-list";
 
-const MyPets = ({ username }) => {
+const MyPets = () => {
+    const { username } = useAuth();
+
     return (
         <section className="my-pets">
             <h1>My Pets</h1>
-            <ul className="my-pets-list">
-                <MyPetsList username={username}/>
-            </ul>
+            <MyPetsList username={username} />
         </section>
     );
 }
