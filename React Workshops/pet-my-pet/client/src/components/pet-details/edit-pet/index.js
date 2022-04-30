@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import usePetService from '../../../hooks/usePetService';
+import { useNotification } from '../../../contexts/NotificationContext';
 
+import { getPetById, editPet } from '../../../utils/petService';
 import * as formValidator from "../../../utils/formValidator";
 
 import InputError from '../../shared/input-error';
@@ -27,13 +28,11 @@ const EditPet = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
-    const { getPetById, editPet } = usePetService();
+    const { notifyInfo, notifyError } = useNotification();
 
     useEffect(() => {
         getPetById(id)
-            .then(res => {
-                setPet(res);
-            });
+            .then(setPet);
     }, [id]);
 
     const onDescriptionBlurHandler = (e) => {
@@ -53,9 +52,9 @@ const EditPet = () => {
         const newDescription = e.target.description.value;
 
         editPet(id, newDescription)
-            .then(res => {
-                setPet(res);
+            .then(() => {
                 navigate('/pets');
+                notifyInfo(`Successfully edited ${pet.name}!`);
             });
     };
 

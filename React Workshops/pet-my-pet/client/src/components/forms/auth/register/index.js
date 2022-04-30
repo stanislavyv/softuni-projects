@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../contexts/AuthContext";
+import { useNotification } from "../../../../contexts/NotificationContext";
+
+import { createUser } from "../../../../utils/authService";
 
 import AuthForm from "..";
 
 const RegisterForm = () => {
     const [isValid, setIsValid] = useState(false);
+    const { notifyError } = useNotification();
     const navigate = useNavigate();
-    const { createUser } = useAuth();
 
     const onRegisterClickHandler = (e) => {
         e.preventDefault();
@@ -21,6 +23,8 @@ const RegisterForm = () => {
             .then((res) => {
                 if (res) {
                     navigate('/');
+                } else {
+                    notifyError('Email already in use!');
                 }
             })
     };

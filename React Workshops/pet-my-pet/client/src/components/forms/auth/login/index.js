@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../contexts/AuthContext";
+import { useNotification } from "../../../../contexts/NotificationContext";
+
+import { signIn } from "../../../../utils/authService";
 
 import AuthForm from "..";
 
 const LoginForm = () => {
     const [isValid, setIsValid] = useState(false);
+    const { notifyError } = useNotification();
     const navigate = useNavigate();
-    const { signIn } = useAuth();
 
     const onLoginClickHandler = (e) => {
         e.preventDefault();
@@ -21,6 +23,8 @@ const LoginForm = () => {
             .then((res) => {
                 if (res) {
                     navigate('/');
+                } else {
+                    notifyError('Invalid e-mail or password!');
                 }
             })
     };

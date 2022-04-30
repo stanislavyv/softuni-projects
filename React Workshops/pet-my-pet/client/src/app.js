@@ -35,12 +35,12 @@ function App() {
     return (
         <>
             <GlobalStyles />
-            <NotificationProvider>
-                <AuthProvider>
-                    <Loading loading={true} />
-                    <Header />
+            <AuthProvider>
+                <Loading />
+                <Header />
 
-                    <CustomErrorBoundary>
+                <CustomErrorBoundary>
+                    <NotificationProvider>
                         <Routes>
                             <Route path="/pets" element={<Dashboard />} />
 
@@ -74,9 +74,9 @@ function App() {
                         </Routes>
 
                         <Notification />
-                    </CustomErrorBoundary>
-                </AuthProvider>
-            </NotificationProvider>
+                    </NotificationProvider>
+                </CustomErrorBoundary>
+            </AuthProvider>
 
             <Footer />
 

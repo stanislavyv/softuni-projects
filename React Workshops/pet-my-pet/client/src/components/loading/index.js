@@ -6,6 +6,7 @@ const StyledLoading = styled.div`
     backdrop-filter: blur(7px);
     width: 100vw;
     height: 2500px;
+    z-index: 10;
 `;
 
 const Loading = () => {

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useLike from "../../../hooks/useLike";
-import usePetService from "../../../hooks/usePetService";
+
+import { getPetById } from "../../../utils/petService";
 
 import PetCardWrapper from "../../pet-card/pet-card-wrapper";
 import PetDetailsWrapper from "../pet-details-wrapper";
@@ -12,7 +13,6 @@ const OtherPetDetails = () => {
     const [pet, setPet] = useState({});
     const { id } = useParams();
     const { hasAlreadyLiked, toggleLike } = useLike(id, pet.likes);
-    const { getPetById } = usePetService();
 
     useEffect(() => {
         getPetById(id)

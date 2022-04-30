@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import usePetService from '../../../hooks/usePetService';
+
+import { getAllPets } from '../../../utils/petService';
 
 import PetsList from '../../pets-list';
 import MyPetCard from '../../pet-card/my-pet-card';
 
 const MyPetsList = ({ username }) => {
     const [pets, setPets] = useState([]);
-    const { getAllPets } = usePetService();
 
     useEffect(() => {
         getAllPets()

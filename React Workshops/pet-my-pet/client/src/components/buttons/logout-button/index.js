@@ -1,10 +1,10 @@
-import { useAuth } from "../../../contexts/AuthContext";
-
 import { useNavigate } from "react-router-dom";
+
+import { logout } from "../../../utils/authService";
+
 import Button from "../../shared/button";
 
 const LogoutButton = () => {
-    const { logout } = useAuth();
     const navigate = useNavigate();
     
     const onLogoutClickHandler = () => {

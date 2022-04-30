@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext, useMemo } from 'react';
-import useAuthService from '../../hooks/useAuthService';
+import { useAuthState } from "react-firebase-hooks/auth";
 
+import { auth, onStateChange } from '../../utils/authService';
 
 const AuthContext = React.createContext({});
 AuthContext.displayName = 'AuthContext';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const { loading, onStateChange, createUser, signIn, logout } = useAuthService();
+    const [, loading] = useAuthState(auth);
 
     useEffect(() => {
         onStateChange(setUser);
@@ -17,9 +18,6 @@ const AuthProvider = ({ children }) => {
         loading,
         isLoggedIn: Boolean(user),
         username: user?.email,
-        createUser,
-        signIn,
-        logout
     }), [user, loading]);
 
     return (

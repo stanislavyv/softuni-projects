@@ -1,7 +1,9 @@
 import { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import usePetService from "../../../hooks/usePetService";
 import { useAuth } from "../../../contexts/AuthContext";
+import { useNotification } from "../../../contexts/NotificationContext";
+
+import { createPet } from "../../../utils/petService";
 
 import * as formValidator from "../../../utils/formValidator";
 
@@ -29,8 +31,8 @@ const CreatePet = () => {
         description: ''
     });
     const { username } = useAuth();
+    const { notifyInfo } = useNotification();
     const navigate = useNavigate();
-    const { createPet } = usePetService();
 
     const onNameBlurHandler = (e) => {
         const nameValue = e.target.value;
@@ -68,8 +70,10 @@ const CreatePet = () => {
             creator: username,
             peopleLiked: []
         };
+
         createPet(petObject);
         navigate('/pets');
+        notifyInfo(`Successfully added ${petObject.name}!`);
     };
 
     return (
