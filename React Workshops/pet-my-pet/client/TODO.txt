@@ -1,0 +1,35 @@
+//TODO:
+** IMMEDIATE
+    - Fix EditPet and CreatePet redirecting on page refresh
+    - "Are you sure?" pop-up on delete click
+    - Make usePetService a singleton?
+    - Add loading spinner for Loading component
+
+* CORE FUNC
+    ** TODO FEATURES
+        - Fix textarea and description
+        - Add pagination
+        - Make pet cards with fixed height
+        - Add comments functionality
+        - Make the app responsive (mobile first?)
+        - Add unit tests
+        - Make footer always be on bottom of page
+        - Add "404 Not Found" page
+    
+    ** FUTURE FEATURES
+        - Maybe implement chat between users?
+        - User pages and their pets
+        - Server-side authorization
+        - Notifications for when someone likes/ comments your pet?
+        - Add more pet photos in details page (gallery)
+
+* REFACTOR
+    - Migrate to firebase realtime db (or express + mongo?)
+    
+* OPTIMIZATION
+    - See if you can optimize petService to make less requests (React Query)
+
+* OTHER
+    - jwt?
+    - Add .env files?
+    - Add summaries to exported functions
