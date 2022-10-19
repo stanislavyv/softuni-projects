@@ -6,7 +6,8 @@ const router = require("./routes");
 
 const app = express();
 
-require("./config/express")(app);
+const setupExpress = require("./config/express");
+setupExpress(app);
 
 app.use(router);
 
