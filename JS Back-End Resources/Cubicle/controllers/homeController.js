@@ -1,11 +1,13 @@
-const { Router } = require('express');
+const { Router } = require("express");
 
 const routes = Router();
 
-routes.get('/', (req, res) => {
-    res.redirect('/cubes');
+routes.get("/", (req, res) => {
+    res.redirect("/cubes");
 });
 
-routes.get('/about', (req, res) => {
-    res.render('about');
+routes.get("/about", (req, res) => {
+    res.render("about");
 });
+
+module.exports = routes;

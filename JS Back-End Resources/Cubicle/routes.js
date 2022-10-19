@@ -1,8 +1,11 @@
 const { Router } = require('express');
-// TODO: Require Controllers...
+
+const homeController = require('./controllers/homeController');
+const cubeController = require('./controllers/cubeController');
 
 const router = Router();
 
-module.exports = (app) => {
-    // TODO...
-};
+router.use('/', homeController);
+router.use('/cubes', cubeController);
+
+module.exports = router;
