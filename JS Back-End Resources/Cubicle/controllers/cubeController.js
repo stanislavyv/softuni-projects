@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const cubeService = require('../services/cubeService');
+const { validateCube } = require('./utils/validator');
 
 const routes = Router();
 
@@ -12,7 +13,7 @@ routes.get('/create', (req, res) => {
     res.render('create', { title: 'Create' });
 });
 
-routes.post('/create', (req, res) => {
+routes.post('/create', validateCube, (req, res) => {
     const data = req.body;
 
     cubeService
