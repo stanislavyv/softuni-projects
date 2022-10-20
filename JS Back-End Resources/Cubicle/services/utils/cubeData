@@ -4,7 +4,7 @@ const fs = require('fs/promises');
 
 const getCubeData = () => {
     const getAll = () => cubes.slice();
-    const getById = (id) => cubes.find((c) => Number(c.id) == id);
+    const getById = (id) => cubes.find((c) => c.id === id);
     const create = (data) => {
         cubes.push(data);
 

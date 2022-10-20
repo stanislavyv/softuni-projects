@@ -15,9 +15,15 @@ routes.get('/create', (req, res) => {
 routes.post('/create', (req, res) => {
     const data = req.body;
 
-    cubeService.create(data)
+    cubeService
+        .create(data)
         .then(res.redirect('/'))
         .catch(res.status(500).end());
+});
+
+routes.get('/details/:id', (req, res) => {
+    let cube = cubeService.getById(req.params.id);
+    res.render('details', { title: 'Details', cube});
 });
 
 module.exports = routes;
