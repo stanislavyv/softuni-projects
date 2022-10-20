@@ -1,11 +1,11 @@
 const { Router } = require('express');
 const cubeService = require('../services/cubeService');
-const cubeData = require('../services/utils/cubeData');
 
 const routes = Router();
 
 routes.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
+    const cubes = cubeService.getAll();
+    res.render('index', { title: 'Home', cubes });
 });
 
 routes.get('/create', (req, res) => {
