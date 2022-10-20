@@ -2,7 +2,23 @@ const cubeData = require('./utils/cubeData');
 const Cube = require('../models/Cube');
 
 const cubeService = () => {
-    const getAll = () => cubeData.getAll();
+    const getAll = (query) => {
+        let cubes = cubeData.getAll();
+
+        if (query.search) {
+            cubes = cubes.filter(c => c.name.toLowerCase().includes(query.search));
+        }
+
+        if (query.from) {
+            cubes = cubes.filter(c => Number(c.level) >= Number(query.from))
+        }
+
+        if (query.to) {
+            cubes = cubes.filter(c => Number(c.level) <= Number(query.to))
+        }
+
+        return cubes;
+    };
     const getById = (id) => cubeData.getById(id);
 
     const create = (data) => {

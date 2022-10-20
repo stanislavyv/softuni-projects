@@ -40,5 +40,12 @@
         "description": "Pentagon Cube",
         "imageUrl": "https://i.redd.it/fbsh6cvn27361.jpg",
         "level": "4"
+    },
+    {
+        "id": "j7xfax3l9gzkqxg",
+        "name": "My cube ",
+        "description": "Not a Rubic's cube",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Necker_cube.svg/640px-Necker_cube.svg.png",
+        "level": "6"
     }
 ]

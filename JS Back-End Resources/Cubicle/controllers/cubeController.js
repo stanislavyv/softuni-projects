@@ -4,7 +4,7 @@ const cubeService = require('../services/cubeService');
 const routes = Router();
 
 routes.get('/', (req, res) => {
-    const cubes = cubeService.getAll();
+    const cubes = cubeService.getAll(req.query);
     res.render('index', { title: 'Home', cubes });
 });
 
