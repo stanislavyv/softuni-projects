@@ -2,8 +2,19 @@ const cubeData = require('./utils/cubeData');
 const Cube = require('../models/Cube');
 
 const cubeService = () => {
-    console.log(cubeData);
+    const getAll = () => cubeData.getAll();
+    const getById = (id) => cubeData.getById(id);
+
+    const create = (data) => {
+        const cube = new Cube(data);
+        return cubeData.create(cube);
+    };
+
+    return {
+        getAll,
+        getById,
+        create,
+    };
 };
 
-return cubeService();
-
+module.exports = cubeService();

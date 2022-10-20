@@ -8,15 +8,17 @@ const getCubeData = () => {
     const create = (data) => {
         cubes.push(data);
 
-        const cubesPath = path.join(__dirname, '../../config/database.json');
-        // Promise
-        return fs.writeFile(cubesPath, cubes);
+        const cubesPath = path.normalize(
+            path.join(__dirname, '../../config/database.json')
+        );
+
+        return fs.writeFile(cubesPath, JSON.stringify(cubes));
     };
 
     return {
         getAll,
         getById,
-        create
+        create,
     };
 };
 

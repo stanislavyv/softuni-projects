@@ -6,7 +6,7 @@ class Cube {
         this.name = data.name;
         this.description = data.description;
         this.imageUrl = data.imageUrl;
-        this.level = data.level;
+        this.level = data.difficultyLevel;
     }
 }
 
