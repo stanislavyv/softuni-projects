@@ -1,13 +1,35 @@
-const getId = require('uniqid');
+const mongoose = require('mongoose');
 
-class Cube {
-    constructor (data) {
-        this.id = getId();
-        this.name = data.name;
-        this.description = data.description;
-        this.imageUrl = data.imageUrl;
-        this.level = data.difficultyLevel;
-    }
-}
+const cubeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        minLength: 4,
+        maxLength: 20,
+    },
+    description: {
+        type: String,
+        required: true,
+        minLength: 8,
+        maxLength: 50,
+    },
+    imageUrl: {
+        type: String,
+        required: true,
+        validate: /^https?/,
+    },
+    level: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 6,
+    },
+    accessories: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Accessory',
+        },
+    ],
+});
 
-module.exports = Cube;
+module.exports = mongoose.model('Cube', cubeSchema);
