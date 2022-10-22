@@ -8,6 +8,9 @@ const app = express();
 const setupExpress = require("./config/express");
 setupExpress(app);
 
+const setupMongoose = require('./config/mongoose');
+setupMongoose();
+
 app.use(router);
 
 app.listen(config.PORT, () =>
