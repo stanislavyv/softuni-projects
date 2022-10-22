@@ -1,5 +1,4 @@
-const env = process.env.NODE_ENV || "development";
-const config = require("./config/config")[env];
+const config = require("./config/config");
 
 const express = require("express");
 const router = require("./routes");
@@ -11,6 +10,6 @@ setupExpress(app);
 
 app.use(router);
 
-app.listen(config.port, () =>
-    console.log(`Listening on port ${config.port}...`)
+app.listen(config.PORT, () =>
+    console.log(`Listening on port ${config.PORT}...`)
 );
