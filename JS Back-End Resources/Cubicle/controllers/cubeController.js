@@ -39,7 +39,7 @@ routes.get('/details/:id', (req, res) => {
 
 routes.get('/details/:id/attach', async (req, res) => {
     const cube = await cubeService.getById(req.params.id);
-    const accessories = await accessoryService.getAll();
+    const accessories = await accessoryService.getAllNotIn(cube.accessories);
 
     res.render('attachAccessory', { title: 'Attach', cube, accessories });
 });

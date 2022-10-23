@@ -5,6 +5,10 @@ module.exports = {
         return Accessory.find({}).lean();
     },
 
+    getAllNotIn(accessoryArr) {
+        return Accessory.find({ _id: { $nin: accessoryArr } }).lean();
+    },
+
     getById(id) {
         return Accessory.findById(id).lean();
     },
