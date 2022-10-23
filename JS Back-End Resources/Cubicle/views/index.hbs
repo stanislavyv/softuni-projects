@@ -25,5 +25,9 @@
 
     {{#each cubes}}
        {{> cube}}
+    {{else}}
+        <article style="display: flex; justify-content: center">
+            <p style="font-size: 22px; font-weigth: bold">No cubes match your search...</p>
+        </article>
     {{/each}}
 </main>

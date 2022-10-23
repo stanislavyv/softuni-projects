@@ -4,25 +4,26 @@ const Cube = require('../models/Cube');
 const accessoryService = require('./accessoryService');
 
 const cubeService = () => {
-    const getAll = (query) => {
-        let cubes = Cube.find({}).lean();
+    const getAll = (inputQuery) => {
+        const { search, from, to } = inputQuery;
+        let query = {};
 
-        // TODO:
-        if (query.search) {
-            cubes = cubes.filter((c) =>
-                c.name.toLowerCase().includes(query.search)
-            );
+        if (search) {
+            query = { ...query, name: { $regex: search, $options: 'i' } };
         }
 
-        if (query.from) {
-            cubes = cubes.filter((c) => Number(c.level) >= Number(query.from));
+        if (from) {
+            query = { ...query, difficultyLevel: { $gte: +from } };
         }
 
-        if (query.to) {
-            cubes = cubes.filter((c) => Number(c.level) <= Number(query.to));
+        if (to) {
+            query = {
+                ...query,
+                difficultyLevel: { ...query.difficultyLevel, $lte: +to },
+            };
         }
 
-        return cubes;
+        return Cube.find(query).lean();
     };
 
     const getById = (id) => {
