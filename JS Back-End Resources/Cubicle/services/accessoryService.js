@@ -2,7 +2,7 @@ const Accessory = require('../models/Accessory');
 
 module.exports = {
     getAll() {
-        return Accessory.find({}).lean;
+        return Accessory.find({}).lean();
     },
 
     create(data) {
