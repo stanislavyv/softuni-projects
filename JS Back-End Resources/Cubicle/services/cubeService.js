@@ -1,5 +1,7 @@
 // const cubeData = require('./utils/cubeData.js');
+const Accessory = require('../models/Accessory');
 const Cube = require('../models/Cube');
+const accessoryService = require('./accessoryService');
 
 const cubeService = () => {
     const getAll = (query) => {
@@ -29,6 +31,15 @@ const cubeService = () => {
 
     const create = (data) => {
         const cube = new Cube(data);
+        cube.accessories = [];
+        return cube.save();
+    };
+
+    const attachAccessory = async function (cubeId, accessoryId) {
+        const accessory = await Accessory.findById(accessoryId);
+        const cube = await Cube.findById(cubeId);
+
+        cube.accessories.push(accessory);
         return cube.save();
     };
 
@@ -36,6 +47,7 @@ const cubeService = () => {
         getAll,
         getById,
         create,
+        attachAccessory,
     };
 };
 

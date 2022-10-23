@@ -36,8 +36,18 @@ routes.get('/details/:id', (req, res) => {
 routes.get('/details/:id/attach', async (req, res) => {
     const cube = await cubeService.getById(req.params.id);
     const accessories = await accessoryService.getAll();
-    
+
     res.render('attachAccessory', { title: 'Attach', cube, accessories });
+});
+
+routes.post('/details/:id/attach', (req, res) => {
+    cubeService
+        .attachAccessory(req.params.id, req.body.accessory)
+        .then(() => res.redirect(`/cubes/details/${req.params.id}`))
+        .catch((e) => {
+            console.log(e);
+            res.status(401).end();
+        });
 });
 
 module.exports = routes;

@@ -5,6 +5,10 @@ module.exports = {
         return Accessory.find({}).lean();
     },
 
+    getById(id) {
+        return Accessory.findById(id).lean();
+    },
+
     create(data) {
         const accessory = new Accessory(data);
         return accessory.save();
