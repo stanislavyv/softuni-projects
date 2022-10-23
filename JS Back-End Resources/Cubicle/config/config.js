@@ -1,7 +1,7 @@
 const config = {
     development: {
         PORT: 3001,
-        DB_CONNECTION: 'mongodb://localhost/cubicle'
+        DB_CONNECTION: 'mongodb://localhost/mongotest'
     },
     production: {
         PORT: 80,

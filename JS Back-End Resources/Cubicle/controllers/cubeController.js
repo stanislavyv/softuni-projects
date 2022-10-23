@@ -5,8 +5,12 @@ const { validateCube } = require('./utils/validator');
 const routes = Router();
 
 routes.get('/', (req, res) => {
-    const cubes = cubeService.getAll(req.query);
-    res.render('index', { title: 'Home', cubes });
+    cubeService
+        .getAll(req.query)
+        .then((cubes) => {
+            res.render('index', { title: 'Home', cubes });
+        })
+        .catch(() => res.status(500).end());
 });
 
 routes.get('/create', (req, res) => {
@@ -23,8 +27,9 @@ routes.post('/create', validateCube, (req, res) => {
 });
 
 routes.get('/details/:id', (req, res) => {
-    let cube = cubeService.getById(req.params.id);
-    res.render('details', { title: 'Details', cube});
+    cubeService.getById(req.params.id).then((cube) => {
+        res.render('details', { title: 'Details', cube });
+    });
 });
 
 module.exports = routes;

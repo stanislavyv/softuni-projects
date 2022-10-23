@@ -18,7 +18,7 @@ const cubeSchema = new mongoose.Schema({
         required: true,
         validate: /^https?/,
     },
-    level: {
+    difficultyLevel: {
         type: Number,
         required: true,
         min: 1,
