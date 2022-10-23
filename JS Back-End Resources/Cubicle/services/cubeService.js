@@ -1,4 +1,4 @@
-const cubeData = require('./utils/cubeData.js');
+// const cubeData = require('./utils/cubeData.js');
 const Cube = require('../models/Cube');
 
 const cubeService = () => {

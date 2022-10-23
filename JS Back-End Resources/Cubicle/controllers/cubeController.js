@@ -22,8 +22,8 @@ routes.post('/create', validateCube, (req, res) => {
 
     cubeService
         .create(data)
-        .then(res.redirect('/'))
-        .catch(res.status(500).end());
+        .then(res.status(201).redirect('/'))
+        .catch(res.status(400).end());
 });
 
 routes.get('/details/:id', (req, res) => {
