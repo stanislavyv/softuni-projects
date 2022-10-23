@@ -29,6 +29,10 @@ const cubeService = () => {
         return Cube.findById(id).lean();
     };
 
+    const getByIdWithAccessories = (id) => {
+        return Cube.findById(id).populate('accessories').lean();
+    };
+
     const create = (data) => {
         const cube = new Cube(data);
         cube.accessories = [];
@@ -46,6 +50,7 @@ const cubeService = () => {
     return {
         getAll,
         getById,
+        getByIdWithAccessories,
         create,
         attachAccessory,
     };

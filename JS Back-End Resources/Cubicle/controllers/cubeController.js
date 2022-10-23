@@ -28,8 +28,12 @@ routes.post('/create', validateCube, (req, res) => {
 });
 
 routes.get('/details/:id', (req, res) => {
-    cubeService.getById(req.params.id).then((cube) => {
-        res.render('details', { title: 'Details', cube });
+    cubeService.getByIdWithAccessories(req.params.id).then((cube) => {
+        res.render('details', {
+            title: 'Details',
+            cube,
+            accessories: cube.accessories,
+        });
     });
 });
 
