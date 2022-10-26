@@ -1,13 +1,14 @@
 const { Router } = require('express');
+const isAuthenticated = require('../middlewares/isAuthenticated');
 
 const routes = Router();
 const accessoryService = require('../services/accessoryService');
 
-routes.get('/create', (req, res) => {
+routes.get('/create', isAuthenticated(), (req, res) => {
     res.render('createAccessory', { title: 'Add an Accessory' });
 });
 
-routes.post('/create', (req, res) => {
+routes.post('/create', isAuthenticated(), (req, res) => {
     const data = req.body;
 
     accessoryService

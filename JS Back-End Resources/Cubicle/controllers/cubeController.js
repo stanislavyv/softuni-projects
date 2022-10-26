@@ -3,6 +3,8 @@ const cubeService = require('../services/cubeService');
 const accessoryService = require('../services/accessoryService');
 const { validateCube } = require('./utils/validator');
 
+const isAuthenticated = require('../middlewares/isAuthenticated');
+
 const routes = Router();
 
 routes.get('/', (req, res) => {
@@ -14,11 +16,11 @@ routes.get('/', (req, res) => {
         .catch(() => res.status(500).end());
 });
 
-routes.get('/create', (req, res) => {
+routes.get('/create', isAuthenticated(), (req, res) => {
     res.render('create', { title: 'Create' });
 });
 
-routes.post('/create', validateCube, (req, res) => {
+routes.post('/create', validateCube, isAuthenticated(), (req, res) => {
     const data = req.body;
 
     cubeService
@@ -37,14 +39,14 @@ routes.get('/details/:id', (req, res) => {
     });
 });
 
-routes.get('/details/:id/attach', async (req, res) => {
+routes.get('/details/:id/attach', isAuthenticated(), async (req, res) => {
     const cube = await cubeService.getById(req.params.id);
     const accessories = await accessoryService.getAllNotIn(cube.accessories);
 
     res.render('attachAccessory', { title: 'Attach', cube, accessories });
 });
 
-routes.post('/details/:id/attach', (req, res) => {
+routes.post('/details/:id/attach', isAuthenticated(), (req, res) => {
     cubeService
         .attachAccessory(req.params.id, req.body.accessory)
         .then(() => res.redirect(`/cubes/details/${req.params.id}`))

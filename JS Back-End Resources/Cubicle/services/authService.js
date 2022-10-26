@@ -18,7 +18,6 @@ const register = async (username, password) => {
 
 const login = async (username, password) => {
     const user = await User.findOne({ username });
-    console.log(user);
 
     if (!user) throw { message: 'Try again' };
 

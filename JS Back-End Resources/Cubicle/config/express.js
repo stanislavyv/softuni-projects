@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const cookieParser = require('cookie-parser');
+const auth = require('../middlewares/auth');
 
 const setupExpress = (app) => {
     app.engine(
@@ -20,6 +21,8 @@ const setupExpress = (app) => {
     app.use(express.static('public'));
 
     app.use(cookieParser());
+
+    app.use(auth());
 };
 
 module.exports = setupExpress;
