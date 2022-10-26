@@ -2,7 +2,9 @@ const { Router } = require('express');
 
 const { login, register } = require('../services/authService');
 const { COOKIE_NAME } = require('../config/config');
+
 const isGuest = require('../middlewares/isGuest');
+const isAuthenticated = require('../middlewares/isAuthenticated');
 
 const routes = Router();
 
@@ -40,6 +42,11 @@ routes.post('/login', isGuest(), (req, res) => {
             console.log(e);
             res.render('loginPage', { message: e.message });
         });
+});
+
+routes.get('/logout', isAuthenticated(), (req, res) => {
+    res.clearCookie(COOKIE_NAME);
+    res.redirect('/');
 });
 
 module.exports = routes;
