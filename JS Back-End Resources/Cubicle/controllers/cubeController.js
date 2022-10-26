@@ -72,4 +72,19 @@ routes.post(
     }
 );
 
+routes.get('/edit/:id', isAuthenticated(), isUserCreator(), (req, res) => {
+    cubeService.getById(req.params.id).then((c) => {
+        res.render('editCubePage', { title: 'Edit', cube: c });
+    });
+});
+
+routes.post('/edit/:id', isAuthenticated(), isUserCreator(), (req, res) => {
+    const data = req.body;
+
+    cubeService
+        .editOne(req.params.id, data)
+        .then(res.status(200).redirect('/'))
+        .catch(res.status(400).end());
+});
+
 module.exports = routes;

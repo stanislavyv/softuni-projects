@@ -9,7 +9,7 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 const routes = Router();
 
 routes.get('/register', isGuest(), (req, res) => {
-    res.render('registerPage');
+    res.render('registerPage', { title: 'Register' });
 });
 
 routes.post('/register', isGuest(), (req, res) => {
@@ -27,7 +27,7 @@ routes.post('/register', isGuest(), (req, res) => {
 });
 
 routes.get('/login', isGuest(), (req, res) => {
-    res.render('loginPage');
+    res.render('loginPage', { title: 'Login' });
 });
 
 routes.post('/login', isGuest(), (req, res) => {

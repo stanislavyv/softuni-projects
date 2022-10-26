@@ -48,12 +48,22 @@ const cubeService = () => {
         return cube.save();
     };
 
+    const editOne = (id, data) => {
+        return Cube.findByIdAndUpdate(id, data);
+    };
+
+    const deleteOne = (data) => {
+        return Cube.deleteOne({ name: data.name }, data);
+    };
+
     return {
         getAll,
         getById,
         getByIdWithAccessories,
         create,
         attachAccessory,
+        editOne,
+        deleteOne,
     };
 };
 

@@ -8,6 +8,8 @@
         {{#if isAuthenticated}} 
             {{#if isCreator}}
                 <a class='btn' href='/cubes/details/{{cube._id}}/attach'>Attach</a>
+                <a class='btn' href='/cubes/edit/{{cube._id}}'>Edit</a>
+                <a class='btn' href='/cubes/delete/{{cube._id}}'>Delete</a>
             {{/if}}
         {{/if}}
     </div>
