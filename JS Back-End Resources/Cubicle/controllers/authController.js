@@ -1,6 +1,7 @@
 const { Router } = require('express');
 
-const authService = require('../services/authService');
+const { login, register } = require('../services/authService');
+const { COOKIE_NAME } = require('../config/config');
 
 const routes = Router();
 
@@ -15,8 +16,7 @@ routes.post('/register', (req, res) => {
         return res.render('registerPage', { message: "Passwords don't match" });
     }
 
-    authService
-        .register(username, password)
+    register(username, password)
         .then(() => res.redirect('/login'))
         .catch((e) => {
             res.render('registerPage', { message: e.message });
@@ -25,6 +25,20 @@ routes.post('/register', (req, res) => {
 
 routes.get('/login', (req, res) => {
     res.render('loginPage');
+});
+
+routes.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    login(username, password)
+        .then((token) => {
+            res.cookie(COOKIE_NAME, token);
+            res.redirect('/');
+        })
+        .catch((e) => {
+            console.log(e);
+            res.render('loginPage', { message: e.message });
+        });
 });
 
 module.exports = routes;
