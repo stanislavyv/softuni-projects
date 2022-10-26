@@ -1,7 +1,8 @@
 const config = {
     development: {
         PORT: 3001,
-        DB_CONNECTION: 'mongodb://localhost/mongotest'
+        DB_CONNECTION: 'mongodb://localhost/mongotest',
+        SALT_ROUNDS: 6,
     },
     production: {
         PORT: 80,

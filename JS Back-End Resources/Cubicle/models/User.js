@@ -5,12 +5,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 2,
-        maxLength: 20
+        maxLength: 20,
     },
     password: {
         type: String,
         required: true,
         minLength: 6,
-        maxLength: 20
-    }
+    },
 });
+
+module.exports = mongoose.model('User', userSchema);
