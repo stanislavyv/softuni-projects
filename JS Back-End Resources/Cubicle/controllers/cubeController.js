@@ -87,4 +87,11 @@ routes.post('/edit/:id', isAuthenticated(), isUserCreator(), (req, res) => {
         .catch(res.status(400).end());
 });
 
+routes.get('/delete/:id', isAuthenticated(), isUserCreator(), (req, res) => {
+    cubeService
+        .deleteOne(req.params.id)
+        .then(res.status(200).redirect('/'))
+        .catch(res.status(400).end());
+});
+
 module.exports = routes;

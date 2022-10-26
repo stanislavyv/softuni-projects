@@ -52,8 +52,8 @@ const cubeService = () => {
         return Cube.findByIdAndUpdate(id, data);
     };
 
-    const deleteOne = (data) => {
-        return Cube.deleteOne({ name: data.name }, data);
+    const deleteOne = (id) => {
+        return Cube.deleteOne({ _id: id });
     };
 
     return {
