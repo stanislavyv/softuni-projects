@@ -1,10 +1,14 @@
 const { Router } = require('express');
 
-const { login, register } = require('../services/authService');
+const { login, register, doesUserExist } = require('../services/authService');
 const { COOKIE_NAME } = require('../config/config');
 
 const isGuest = require('../middlewares/isGuest');
 const isAuthenticated = require('../middlewares/isAuthenticated');
+
+const validator = require('./utils/validator');
+const { validationResult } = require('express-validator');
+const saveOriginalData = require('./utils/saveOriginalData');
 
 const routes = Router();
 
@@ -12,19 +16,36 @@ routes.get('/register', isGuest(), (req, res) => {
     res.render('registerPage', { title: 'Register' });
 });
 
-routes.post('/register', isGuest(), (req, res) => {
-    const { username, password, repeatPassword } = req.body;
+routes.post(
+    '/register',
+    isGuest(),
+    saveOriginalData,
+    validator.register,
+    (req, res) => {
+        const { username, password, repeatPassword } = req.body;
 
-    if (password !== repeatPassword) {
-        return res.render('registerPage', { message: "Passwords don't match" });
+        try {
+            if (password !== repeatPassword) {
+                throw { message: "Passwords don't match" };
+            }
+
+            if (doesUserExist(username))
+                throw { message: 'Username already taken' };
+
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) throw { message: errors.array()[0].msg };
+
+            register(username, password).then(() => {
+                res.redirect('/login');
+            });
+        } catch (e) {
+            return res.render('registerPage', {
+                username: req.originalData.username,
+                message: e.message,
+            });
+        }
     }
-
-    register(username, password)
-        .then(() => res.redirect('/login'))
-        .catch((e) => {
-            res.render('registerPage', { message: e.message });
-        });
-});
+);
 
 routes.get('/login', isGuest(), (req, res) => {
     res.render('loginPage', { title: 'Login' });

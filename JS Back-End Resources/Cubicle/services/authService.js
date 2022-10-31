@@ -28,7 +28,14 @@ const login = async (username, password) => {
     return jwt.sign({ _id: user._id }, SECRET);
 };
 
+const doesUserExist = async (username) => {
+    const user = await User.findOne({ username });
+
+    return user ? true : false;
+};
+
 module.exports = {
     register,
     login,
+    doesUserExist,
 };

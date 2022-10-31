@@ -1,10 +1,13 @@
 const { Router } = require('express');
 const cubeService = require('../services/cubeService');
 const accessoryService = require('../services/accessoryService');
-const { validateCube } = require('./utils/validator');
 
 const isAuthenticated = require('../middlewares/isAuthenticated');
 const isUserCreator = require('../middlewares/isUserCreator');
+
+const validator = require('./utils/validator');
+const saveOriginalData = require('./utils/saveOriginalData');
+const { validationResult } = require('express-validator');
 
 const routes = Router();
 
@@ -21,13 +24,20 @@ routes.get('/create', isAuthenticated(), (req, res) => {
     res.render('create', { title: 'Create' });
 });
 
-routes.post('/create', validateCube, isAuthenticated(), (req, res) => {
+routes.post('/create', isAuthenticated(), validator.product, (req, res) => {
     const data = req.body;
 
-    cubeService
-        .create({ ...data, creator: req.user._id })
-        .then(res.status(201).redirect('/'))
-        .catch(res.status(400).end());
+    const errors = validationResult(req);
+
+    try {
+        if (!errors.isEmpty()) throw { message: errors.array()[0].msg };
+
+        cubeService
+            .create({ ...data, creator: req.user._id })
+            .then(res.status(201).redirect('/'));
+    } catch (e) {
+        res.render('create', { message: e.message, cube: data });
+    }
 });
 
 routes.get('/details/:id', (req, res) => {
@@ -78,14 +88,27 @@ routes.get('/edit/:id', isAuthenticated(), isUserCreator(), (req, res) => {
     });
 });
 
-routes.post('/edit/:id', isAuthenticated(), isUserCreator(), (req, res) => {
-    const data = req.body;
+routes.post(
+    '/edit/:id',
+    isAuthenticated(),
+    isUserCreator(),
+    validator.product,
+    (req, res) => {
+        const data = req.body;
 
-    cubeService
-        .editOne(req.params.id, data)
-        .then(res.status(200).redirect('/'))
-        .catch(res.status(400).end());
-});
+        const errors = validationResult(req);
+
+        try {
+            if (!errors.isEmpty()) throw { message: errors.array()[0].msg };
+
+            cubeService
+                .editOne(req.params.id, data)
+                .then(res.status(200).redirect('/'));
+        } catch (e) {
+            res.render('editCubePage', { message: e.message, cube: data });
+        }
+    }
+);
 
 routes.get('/delete/:id', isAuthenticated(), isUserCreator(), (req, res) => {
     cubeService
